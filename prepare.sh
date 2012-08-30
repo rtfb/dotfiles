@@ -38,4 +38,8 @@ cp gitconfig ~/.gitconfig
 #================
 # bash
 #================
+if [ -f ~/.bashrc ] ; then
+    mv ~/.bashrc ~/.bashrc~
+fi
+
 cp bashrc ~/.bashrc
