@@ -1,5 +1,8 @@
 #!/bin/sh
 
+#================
+# Vim
+#================
 cp vimrc ~/.vimrc
 mkdir -p ~/.vim/spell
 
@@ -26,3 +29,8 @@ unzip -o -x /tmp/bufexplorer.zip -d ~/.vim
 # Supertab: http://www.vim.org/scripts/script.php?script_id=1643
 wget -O /tmp/supertab.vmb http://www.vim.org/scripts/download_script.php?src_id=18075
 vim -c 'so %' -c 'q' supertab.vmb
+
+#================
+# Git
+#================
+cp gitconfig ~/.gitconfig
