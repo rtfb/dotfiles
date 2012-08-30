@@ -34,3 +34,8 @@ vim -c 'so %' -c 'q' supertab.vmb
 # Git
 #================
 cp gitconfig ~/.gitconfig
+
+#================
+# bash
+#================
+cp bashrc ~/.bashrc
