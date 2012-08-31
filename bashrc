@@ -106,7 +106,7 @@ GIT_PS1_SHOWDIRTYSTATE="1"
 GIT_PS1_SHOWUNTRACKEDFILES="1"
 GIT_PS1_SHOWSTASHSTATE="1"
 #  echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
-export PS1=$IBlack$Time24h$Color_Off'$(git branch &>/dev/null;\
+export PS1=$Blue$Time24h$Color_Off'$(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
   echo "$( \
   if [ "$(__git_ps1 %s)" = "`git branch | grep "*" | sed s/"^* "//`" ]; then \
