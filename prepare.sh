@@ -1,6 +1,18 @@
 #!/bin/sh
 
 #================
+# SourceCodePro font
+#================
+if ! [ -f ~/.fonts/SourceCodePro-Regular.ttf] ; then
+    wget -O /tmp/SourceCodePro.zip https://github.com/downloads/adobe/Source-Code-Pro/SourceCodePro_FontsOnly-1.010.zip
+    unzip -o -x /tmp/SourceCodePro.zip -d /tmp/SourceCodePro
+    mkdir -p ~/.fonts
+    chmod +w /tmp/SourceCodePro/*/TTF/*.ttf
+    cp /tmp/SourceCodePro/*/TTF/*.ttf ~/.fonts
+    fc-cache
+fi
+
+#================
 # Vim
 #================
 cp vimrc ~/.vimrc

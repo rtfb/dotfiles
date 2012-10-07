@@ -108,7 +108,6 @@ set ignorecase
 "noremap <C-L>       :s/^\/\///<CR>:noh<CR>
 
 set encoding=utf-8
-" set guifont=courier_new:h12
 set fileencoding=utf-8
 set tags+=tags;/
 
@@ -119,7 +118,7 @@ set spelllang=lt,en
 set nobackup
 set autoindent
 
-set gfn=Courier\ 10\ Pitch\ 10
+set gfn=SourceCodePro\ 10
 
 let g:load_doxygen_syntax=1
 
