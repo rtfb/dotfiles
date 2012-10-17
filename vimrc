@@ -200,3 +200,6 @@ set foldmethod=marker
 set foldmarker=BEGIN\ EX,END\ EX
 
 nmap <silent> gr :tabprev<cr>
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+nnoremap <silent> <Leader>f :CtrlP<cr>

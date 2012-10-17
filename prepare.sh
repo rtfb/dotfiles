@@ -42,6 +42,10 @@ unzip -o -x /tmp/bufexplorer.zip -d ~/.vim
 wget -O /tmp/supertab.vmb http://www.vim.org/scripts/download_script.php?src_id=18075
 vim -c 'so %' -c 'q' supertab.vmb
 
+# CtrlP: http://kien.github.com/ctrlp.vim/
+git clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
+vim -c 'helptags ~/.vim/bundle/ctrlp.vim/doc' -c 'q'
+
 #================
 # Git
 #================
