@@ -22,8 +22,8 @@
 "     Remove the fuzzy label                          <S-F8>      \r
 "     Show msgfmt statistics for the file(*)          <S-F11>     \s
 "     Browse through msgfmt errors for the file(*)    <S-F12>     \e
-"     Put the translator info in the header           \t          \t
-"     Put the lang. team info in the header           \l          \l
+"     Put the translator info in the header           \a          \a
+"     Put the lang. team info in the header           \t          \t
 "     ---------------------------------------------------------------
 "     (*) Only available on UNIX computers.
 "
@@ -40,8 +40,8 @@
 "     Split-open the file under cursor                  gf        gf
 "     Show msgfmt statistics for the file(*)          <S-F11>     \s
 "     Browse through msgfmt errors for the file(*)    <S-F12>     \e
-"     Put the translator info in the header           \t          \t
-"     Put the lang. team info in the header           \l          \l
+"     Put the translator info in the header           \a          \a
+"     Put the lang. team info in the header           \t          \t
 "     ---------------------------------------------------------------
 "     (*) Only available on UNIX computers.
 "
@@ -279,11 +279,11 @@ endif
 " Add translator info in the file header.
 if !hasmapto('<Plug>TranslatorInfo')
    if gui
-      imap <buffer> <unique> <LocalLeader>t <Plug>TranslatorInfo
-      nmap <buffer> <unique> <LocalLeader>t <Plug>TranslatorInfo
+      imap <buffer> <unique> <LocalLeader>a <Plug>TranslatorInfo
+      nmap <buffer> <unique> <LocalLeader>a <Plug>TranslatorInfo
    else
-      imap <buffer> <unique> <LocalLeader>t <Plug>TranslatorInfo
-      nmap <buffer> <unique> <LocalLeader>t <Plug>TranslatorInfo
+      imap <buffer> <unique> <LocalLeader>a <Plug>TranslatorInfo
+      nmap <buffer> <unique> <LocalLeader>a <Plug>TranslatorInfo
    endif
 endif
 inoremap <buffer> <unique> <Plug>TranslatorInfo <ESC>:call <SID>AddHeaderInfo('person')<CR>i
@@ -292,11 +292,11 @@ nnoremap <buffer> <unique> <Plug>TranslatorInfo :call <SID>AddHeaderInfo('person
 " Add language team info in the file header.
 if !hasmapto('<Plug>LangTeamInfo')
    if gui
-      imap <buffer> <unique> <LocalLeader>l <Plug>LangTeamInfo
-      nmap <buffer> <unique> <LocalLeader>l <Plug>LangTeamInfo
+      imap <buffer> <unique> <LocalLeader>t <Plug>LangTeamInfo
+      nmap <buffer> <unique> <LocalLeader>t <Plug>LangTeamInfo
    else
-      imap <buffer> <unique> <LocalLeader>l <Plug>LangTeamInfo
-      nmap <buffer> <unique> <LocalLeader>l <Plug>LangTeamInfo
+      imap <buffer> <unique> <LocalLeader>t <Plug>LangTeamInfo
+      nmap <buffer> <unique> <LocalLeader>t <Plug>LangTeamInfo
    endif
 endif
 inoremap <buffer> <unique> <Plug>LangTeamInfo <ESC>:call <SID>AddHeaderInfo('team')<CR>i
