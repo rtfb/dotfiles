@@ -289,6 +289,9 @@ endif
 inoremap <silent> <buffer> <unique> <Plug>ReWrap <ESC>:call <SID>ProcessWithMsgAttrib()<CR>i
 nnoremap <silent> <buffer> <unique> <Plug>ReWrap :call <SID>ProcessWithMsgAttrib()<CR>
 
+nnoremap o o""<Esc>i
+nnoremap O O""<Esc>i
+
 fu! <SID>ProcessWithMsgAttrib()
    " Prepare for cleanup at the end of this function.
    let hist_search = histnr("/")
