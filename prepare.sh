@@ -46,6 +46,10 @@ vim -c 'so %' -c 'q' supertab.vmb
 git clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
 vim -c 'helptags ~/.vim/bundle/ctrlp.vim/doc' -c 'q'
 
+# ftplugin for .po files
+mkdir -p ~/.vim/ftplugin
+cp vim/ftplugin/po.vim ~/.vim/ftplugin
+
 #================
 # Git
 #================
