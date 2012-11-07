@@ -167,10 +167,6 @@ set hidden
 nnoremap ' `
 nnoremap ` '
 
-" C/H file switcher, a shortcut for this plugin:
-" http://vim.sourceforge.net/scripts/script.php?script_id=31
-nmap <silent> <leader>a :A <CR>
-
 map <C-H> <C-W>h<C-W>_
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
