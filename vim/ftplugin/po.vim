@@ -276,6 +276,40 @@ if has("unix")
    endf
 endif
 
+" re-wrap the file
+if !hasmapto('<Plug>ReWrap')
+   if gui
+      imap <buffer> <unique> <LocalLeader>w <Plug>ReWrap
+      nmap <buffer> <unique> <LocalLeader>w <Plug>ReWrap
+   else
+      imap <buffer> <unique> <LocalLeader>w <Plug>ReWrap
+      nmap <buffer> <unique> <LocalLeader>w <Plug>ReWrap
+   endif
+endif
+inoremap <silent> <buffer> <unique> <Plug>ReWrap <ESC>:call <SID>ProcessWithMsgAttrib()<CR>i
+nnoremap <silent> <buffer> <unique> <Plug>ReWrap :call <SID>ProcessWithMsgAttrib()<CR>
+
+fu! <SID>ProcessWithMsgAttrib()
+   " Prepare for cleanup at the end of this function.
+   let hist_search = histnr("/")
+   let old_report = 'set report='.&report
+   let &report = 100
+   let cursor_pos_cmd = line(".").'normal! '.virtcol(".").'|'
+   normal! H
+   let scrn_pos = line(".").'normal! zt'
+
+   " Rewrap the contents
+   silent! exe '%!msgattrib'
+
+   " Cleanup and restore old cursor position.
+   while histnr("/") > hist_search && histnr("/") > 0
+      call histdel("/", -1)
+   endwhile
+   exe scrn_pos
+   exe cursor_pos_cmd
+   exe old_report
+endf
+
 " Add translator info in the file header.
 if !hasmapto('<Plug>TranslatorInfo')
    if gui
