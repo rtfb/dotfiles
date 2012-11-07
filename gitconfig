@@ -31,3 +31,6 @@
 
     # Show files ignored by git:
     ign = ls-files -o -i --exclude-standard
+
+    # Figure out SHA1 by tag name
+    tagcommit = !sh -c 'git rev-list $0 | head -n 1'
