@@ -43,7 +43,13 @@ wget -O /tmp/supertab.vmb http://www.vim.org/scripts/download_script.php?src_id=
 vim -c 'so %' -c 'q' supertab.vmb
 
 # CtrlP: http://kien.github.com/ctrlp.vim/
-git clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
+ctrlp="~/.vim/bundle/ctrlp.vim"
+
+if [ -d $crlp ]; then
+    rm -rf $ctrlp
+fi
+
+git clone https://github.com/kien/ctrlp.vim.git $ctrlp
 vim -c 'helptags ~/.vim/bundle/ctrlp.vim/doc' -c 'q'
 
 # ftplugin for .po files
