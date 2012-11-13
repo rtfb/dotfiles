@@ -1,0 +1,14 @@
+[ui]
+username = USERSPEC
+editor = vim
+
+[extensions]
+pager =
+color =
+graphlog =
+
+[pager]
+pager = LESS='FSRX' less
+
+[diff]
+git = True

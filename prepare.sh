@@ -90,6 +90,13 @@ cat gitconfig \
     > ~/.gitconfig
 
 #================
+# Hg
+#================
+cat hgrc \
+    | sed s/USERSPEC/"$user_full_name <$user_email>"/ \
+    > ~/.hgrc
+
+#================
 # bash
 #================
 if [ -f ~/.bashrc ] ; then
