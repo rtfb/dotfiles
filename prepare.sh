@@ -1,4 +1,29 @@
-#!/bin/sh
+#!/bin/bash
+
+function usage {
+    echo "Usage: $0 [email | -d]"
+    echo -e "\t-d will use the default email, $default_email"
+    exit
+}
+
+default_email='Vytautas.Shaltenis@gmail.com'
+
+user_name=`whoami`
+user_record=`getent passwd $user_name`
+user_gecos_field=`echo "$user_record" | cut -d ':' -f 5`
+user_full_name=`echo "$user_gecos_field" | cut -d ',' -f 1`
+
+if [ $# -eq 0 ]; then
+    usage
+else
+    if [ $1 == "-d" ]; then
+        user_email=$default_email
+    else
+        user_email=$1
+    fi
+
+    echo "VCSes will be set to use name $user_full_name and email <$user_email>..."
+fi
 
 #================
 # SourceCodePro font
@@ -59,7 +84,10 @@ cp vim/ftplugin/po.vim ~/.vim/ftplugin
 #================
 # Git
 #================
-cp gitconfig ~/.gitconfig
+cat gitconfig \
+    | sed s/USERNAME/$user_full_name/ \
+    | sed s/USEREMAIL/$user_email/ \
+    > ~/.gitconfig
 
 #================
 # bash
