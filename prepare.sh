@@ -85,8 +85,8 @@ cp vim/ftplugin/po.vim ~/.vim/ftplugin
 # Git
 #================
 cat gitconfig \
-    | sed s/USERNAME/$user_full_name/ \
-    | sed s/USEREMAIL/$user_email/ \
+    | sed s/USERNAME/"$user_full_name"/ \
+    | sed s/USEREMAIL/"$user_email"/ \
     > ~/.gitconfig
 
 #================
