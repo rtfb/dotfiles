@@ -59,13 +59,10 @@ if has("autocmd")
   " Help autodetection
   augroup filetypedetect
     au! BufRead,BufNewFile *.mdwn setfiletype markdown
-    au! BufRead,BufNewFile *.go setfiletype go
   augroup END
 
   " Limit the line length for this mode
   autocmd FileType markdown set tw=80
-
-  au Syntax go runtime! ~/.vim/syntax/go.vim
 
 else
 

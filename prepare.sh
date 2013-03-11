@@ -81,6 +81,17 @@ fi
 git clone https://github.com/kien/ctrlp.vim.git $ctrlp
 vim -c 'helptags ~/.vim/bundle/ctrlp.vim/doc' -c 'q'
 
+# Go stuff: git://github.com/jnwhiteh/vim-golang.git
+vim_golang=/tmp/vim-golang
+
+if [ -d $vim_golang ]; then
+    rm -rf $vim_golang
+fi
+
+git clone git://github.com/jnwhiteh/vim-golang.git $vim_golang
+rm -rf $vim_golang/.git
+cp -r $vim_golang/* $HOME/.vim
+
 # ftplugin for .po files
 mkdir -p ~/.vim/ftplugin
 cp vim/ftplugin/po.vim ~/.vim/ftplugin
