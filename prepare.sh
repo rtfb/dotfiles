@@ -72,7 +72,7 @@ wget -O /tmp/supertab.vmb http://www.vim.org/scripts/download_script.php?src_id=
 vim -c 'so %' -c 'q' supertab.vmb
 
 # CtrlP: http://kien.github.com/ctrlp.vim/
-ctrlp="~/.vim/bundle/ctrlp.vim"
+ctrlp="$HOME/.vim/bundle/ctrlp.vim"
 
 if [ -d $crlp ]; then
     rm -rf $ctrlp
