@@ -96,6 +96,7 @@ set smarttab
 set number                      " show line numbers
 set guioptions-=T               " I never need toolbar, but I need screen real
                                 " estate
+set guioptions-=m               " no menu either
 set ignorecase
 
 " Assign comment-out-a-selected-block to Ctrl+K
@@ -196,3 +197,6 @@ nmap <silent> gr :tabprev<cr>
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 nnoremap <silent> <Leader>f :CtrlP<cr>
+
+nnoremap <Insert> "*p<CR>
+inoremap <Insert> <Esc>"*pa
