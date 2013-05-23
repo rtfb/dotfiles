@@ -40,7 +40,7 @@ fi
 #================
 # Vim
 #================
-cp vimrc ~/.vimrc
+ln -s vimrc ~/.vimrc
 mkdir -p ~/.vim/spell
 
 # I should be doing this:
@@ -94,7 +94,7 @@ cp -r $vim_golang/* $HOME/.vim
 
 # ftplugin for .po files
 mkdir -p ~/.vim/ftplugin
-cp vim/ftplugin/po.vim ~/.vim/ftplugin
+ln -s vim/ftplugin/po.vim ~/.vim/ftplugin
 
 #================
 # Git
@@ -122,4 +122,4 @@ if [ -f ~/.bashrc ] ; then
     mv ~/.bashrc ~/.bashrc~
 fi
 
-cp bashrc ~/.bashrc
+ln -s bashrc ~/.bashrc
