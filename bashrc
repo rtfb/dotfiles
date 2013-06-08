@@ -69,6 +69,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 export GOROOT=~/hacking/go
+export GOPATH=~/sw/gopkgs
 
 PATH=$GOROOT/bin:${PATH}
 
