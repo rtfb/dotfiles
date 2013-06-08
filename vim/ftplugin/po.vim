@@ -279,11 +279,11 @@ endif
 " re-wrap the file
 if !hasmapto('<Plug>ReWrap')
    if gui
-      imap <buffer> <unique> <LocalLeader>w <Plug>ReWrap
-      nmap <buffer> <unique> <LocalLeader>w <Plug>ReWrap
+      imap <buffer> <unique> <LocalLeader><cr> <Plug>ReWrap
+      nmap <buffer> <unique> <LocalLeader><cr> <Plug>ReWrap
    else
-      imap <buffer> <unique> <LocalLeader>w <Plug>ReWrap
-      nmap <buffer> <unique> <LocalLeader>w <Plug>ReWrap
+      imap <buffer> <unique> <LocalLeader><cr> <Plug>ReWrap
+      nmap <buffer> <unique> <LocalLeader><cr> <Plug>ReWrap
    endif
 endif
 inoremap <silent> <buffer> <unique> <Plug>ReWrap <ESC>:call <SID>ProcessWithMsgAttrib()<CR>i
