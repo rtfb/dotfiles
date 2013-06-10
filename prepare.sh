@@ -6,6 +6,9 @@ function usage {
     exit
 }
 
+script=`readlink -f $0`
+here=`dirname $script`
+
 default_email='Vytautas.Shaltenis@gmail.com'
 
 user_name=`whoami`
@@ -40,7 +43,7 @@ fi
 #================
 # Vim
 #================
-ln -s vimrc ~/.vimrc
+ln -s $here/vimrc ~/.vimrc
 mkdir -p ~/.vim/spell
 
 # I should be doing this:
@@ -94,7 +97,7 @@ cp -r $vim_golang/* $HOME/.vim
 
 # ftplugin for .po files
 mkdir -p ~/.vim/ftplugin
-ln -s vim/ftplugin/po.vim ~/.vim/ftplugin
+ln -s $here/vim/ftplugin/po.vim ~/.vim/ftplugin
 
 #================
 # Git
@@ -122,4 +125,4 @@ if [ -f ~/.bashrc ] ; then
     mv ~/.bashrc ~/.bashrc~
 fi
 
-ln -s bashrc ~/.bashrc
+ln -s $here/bashrc ~/.bashrc
