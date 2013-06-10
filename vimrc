@@ -190,7 +190,7 @@ nnoremap <silent> <Leader>l /\%>80v.\+<cr>
 nnoremap <silent> <Leader>gg :Ggrep <cword><cr>
 
 " These two do the same thing:
-nmap <silent> <leader>n :silent :nohlsearch<CR>
+nmap <silent> <leader><cr> :silent :nohlsearch<CR>
 nnoremap <C-L> :nohls<CR><C-L>
 
 set wildmenu
