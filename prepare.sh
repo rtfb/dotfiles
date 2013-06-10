@@ -92,6 +92,13 @@ function install_vim_plugins {
     cp -r $vim_golang/* $HOME/.vim
 }
 
+function symlink {
+    if [ -h $2 ]; then
+        return
+    fi
+    ln -s $1 $2
+}
+
 if [ $full_install -eq 1 ]; then
     install_font
     install_vim_plugins
@@ -100,7 +107,7 @@ fi
 #================
 # Vim
 #================
-ln -s $here/vimrc ~/.vimrc
+symlink $here/vimrc ~/.vimrc
 mkdir -p ~/.vim/ftdetect
 mkdir -p ~/.vim/ftplugin
 mkdir -p ~/.vim/syntax
@@ -114,12 +121,12 @@ mkdir -p ~/.vim/spell
 cp lt.utf-8.spl ~/.vim/spell/lt.utf-8.spl
 
 # ftplugin for .po files
-ln -s $here/vim/ftplugin/po.vim ~/.vim/ftplugin
+symlink $here/vim/ftplugin/po.vim ~/.vim/ftplugin/po.vim
 
 # ftplugin and syntax for hg commits
-ln -s $here/vim/ftdetect/hgcommit.vim ~/.vim/ftdetect/hgcommit.vim
-ln -s $here/vim/ftplugin/hgcommit.vim ~/.vim/ftplugin/hgcommit.vim
-ln -s $here/vim/syntax/hgcommit.vim ~/.vim/syntax/hgcommit.vim
+symlink $here/vim/ftdetect/hgcommit.vim ~/.vim/ftdetect/hgcommit.vim
+symlink $here/vim/ftplugin/hgcommit.vim ~/.vim/ftplugin/hgcommit.vim
+symlink $here/vim/syntax/hgcommit.vim ~/.vim/syntax/hgcommit.vim
 
 #================
 # Git
@@ -147,4 +154,4 @@ if [ -f ~/.bashrc ] ; then
     mv ~/.bashrc ~/.bashrc~
 fi
 
-ln -s $here/bashrc ~/.bashrc
+symlink $here/bashrc ~/.bashrc
