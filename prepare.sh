@@ -99,6 +99,11 @@ cp -r $vim_golang/* $HOME/.vim
 mkdir -p ~/.vim/ftplugin
 ln -s $here/vim/ftplugin/po.vim ~/.vim/ftplugin
 
+# ftplugin and syntax for hg commits
+ln -s $here/vim/ftdetect/hgcommit.vim ~/.vim/ftdetect/hgcommit.vim
+ln -s $here/vim/ftplugin/hgcommit.vim ~/.vim/ftplugin/hgcommit.vim
+ln -s $here/vim/syntax/hgcommit.vim ~/.vim/syntax/hgcommit.vim
+
 #================
 # Git
 #================
