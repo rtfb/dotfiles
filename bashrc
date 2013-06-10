@@ -80,7 +80,11 @@ export PATH
 
 export EDITOR=vim
 
-source /etc/bash_completion.d/git
+if [ -f /etc/bash_completion.d/git ]; then
+    source /etc/bash_completion.d/git
+else
+    source /etc/bash_completion.d/git-prompt
+fi
 
 Color_Off="\[\033[0m\]"       # Text Reset
 Black="\[\033[0;30m\]"        # Black
