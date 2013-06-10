@@ -187,7 +187,7 @@ nmap <silent> gw    "_yiw:s/\v(<\k*%#\k*>)(\_.{-})(<\k+>)/\3\2\1/<cr><c-o><c-l>
 "      \ endif<CR>
 
 nnoremap <silent> <Leader>l /\%>80v.\+<cr>
-nnoremap <silent> <Leader>g :Ggrep <cword><cr>
+nnoremap <silent> <Leader>gg :Ggrep <cword><cr>
 
 " These two do the same thing:
 nmap <silent> <leader>n :silent :nohlsearch<CR>
