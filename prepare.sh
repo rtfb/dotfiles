@@ -7,6 +7,12 @@ function usage {
     exit
 }
 
+function backup {
+    if [ -f $1 ]; then
+        mv $1 $1~
+    fi
+}
+
 script=`readlink -f $0`
 here=`dirname $script`
 
@@ -131,10 +137,7 @@ symlink $here/vim/syntax/hgcommit.vim ~/.vim/syntax/hgcommit.vim
 #================
 # Git
 #================
-if [ -f ~/.gitconfig ] ; then
-    mv ~/.gitconfig ~/.gitconfig~
-fi
-
+backup ~/.gitconfig
 cat gitconfig \
     | sed s/USERNAME/"$user_full_name"/ \
     | sed s/USEREMAIL/"$user_email"/ \
@@ -143,6 +146,7 @@ cat gitconfig \
 #================
 # Hg
 #================
+backup ~/.hgrc
 cat hgrc \
     | sed s/USERSPEC/"$user_full_name <$user_email>"/ \
     > ~/.hgrc
@@ -150,8 +154,5 @@ cat hgrc \
 #================
 # bash
 #================
-if [ -f ~/.bashrc ] ; then
-    mv ~/.bashrc ~/.bashrc~
-fi
-
+backup ~/.bashrc
 symlink $here/bashrc ~/.bashrc
