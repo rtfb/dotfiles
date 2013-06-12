@@ -6,6 +6,9 @@ editor = vim
 pager =
 color =
 graphlog =
+rebase =
+mq =
+record =
 
 [pager]
 pager = LESS='FSRX' less
