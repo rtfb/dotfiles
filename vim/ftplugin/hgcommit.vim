@@ -14,11 +14,8 @@ setlocal nomodeline formatoptions-=croq formatoptions+=tl
 
 let b:undo_ftplugin = 'setl modeline< formatoptions<'
 
-if &textwidth == 0
-  " make sure that log messages play nice with git-log on standard terminals
-  setlocal textwidth=72
-  let b:undo_ftplugin .= "|setl tw<"
-endif
+setlocal textwidth=72
+let b:undo_ftplugin .= "|setl tw<"
 
 if filereadable($HOME.'/.vim/ftplugin/hgcommit-prefix.vim')
     source $HOME/.vim/ftplugin/hgcommit-prefix.vim
