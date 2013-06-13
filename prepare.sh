@@ -17,7 +17,7 @@ function backup {
 script=`readlink -f $0`
 here=`dirname $script`
 
-default_email='Vytautas.Shaltenis@gmail.com'
+default_email='vytas@rtfb.lt'
 
 user_name=`whoami`
 user_record=`getent passwd $user_name`
