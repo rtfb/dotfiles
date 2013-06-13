@@ -19,3 +19,7 @@ if &textwidth == 0
   setlocal textwidth=72
   let b:undo_ftplugin .= "|setl tw<"
 endif
+
+if filereadable($HOME.'/.vim/ftplugin/hgcommit-prefix.vim')
+    source $HOME/.vim/ftplugin/hgcommit-prefix.vim
+endif
