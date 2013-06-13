@@ -1,9 +1,10 @@
 #!/bin/bash
 
 function usage {
-    echo "Usage: $0 [-f] [email | -d]"
+    echo "Usage: $0 [-f] [-d]"
+    echo -e "\t-d will copy the default VCS settings (like .gitconfig.local)"
     echo -e "\t-f will enable full install, including downloads"
-    echo -e "\t-d will use the default email, $default_email"
+    echo -e "\t-h displays this help"
     exit
 }
 
@@ -24,20 +25,27 @@ user_gecos_field=`echo "$user_record" | cut -d ':' -f 5`
 user_full_name=`echo "$user_gecos_field" | cut -d ',' -f 1`
 full_install=0
 
-if [ $# -eq 0 ]; then
-    usage
-else
+if [ $# -gt 0 ]; then
+    if [ $1 == "-h" ]; then
+        usage
+        exit
+    fi
     if [ $1 == "-f" ]; then
         full_install=1
         shift
     fi
     if [ $1 == "-d" ]; then
-        user_email=$default_email
-    else
-        user_email=$1
+        backup ~/.hgrc.local
+        backup ~/.gitconfig.local
+        echo -e "[user]\n" \
+                "\tname = $user_full_name\n" \
+                "\temail = $default_email\n" \
+            > ~/.gitconfig.local
+        echo -e "[ui]\n" \
+                "\tusername = $user_full_name <$default_email>\n" \
+            > ~/.hgrc.local
+        shift
     fi
-
-    echo "VCSes will be set to use name $user_full_name and email <$user_email>..."
 fi
 
 #================
