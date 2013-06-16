@@ -199,10 +199,6 @@ set title
 set nojoinspaces
 set ruler
 
-" Linebreak on 500 characters
-set lbr
-set tw=500
-
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
