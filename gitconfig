@@ -1,3 +1,10 @@
+[user]
+    name = Vytautas Šaltenis
+    email = vytas@rtfb.lt
+
+[include]
+    path = ~/.gitconfig.local
+
 [color]
     ui = auto
 
@@ -30,6 +37,3 @@
 
     # Figure out SHA1 by tag name
     tagcommit = !sh -c 'git rev-list $0 | head -n 1'
-
-[include]
-    path = ~/.gitconfig.local
