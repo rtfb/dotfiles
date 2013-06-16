@@ -145,18 +145,13 @@ symlink $here/vim/syntax/hgcommit.vim ~/.vim/syntax/hgcommit.vim
 # Git
 #================
 backup ~/.gitconfig
-cat gitconfig \
-    | sed s/USERNAME/"$user_full_name"/ \
-    | sed s/USEREMAIL/"$user_email"/ \
-    > ~/.gitconfig
+symlink $here/gitconfig ~/.gitconfig
 
 #================
 # Hg
 #================
 backup ~/.hgrc
-cat hgrc \
-    | sed s/USERSPEC/"$user_full_name <$user_email>"/ \
-    > ~/.hgrc
+symlink $here/hgrc ~/.hgrc
 
 #================
 # bash
