@@ -41,8 +41,7 @@ if [ $# -gt 0 ]; then
                 "\tname = $user_full_name\n" \
                 "\temail = $default_email\n" \
             > ~/.gitconfig.local
-        echo -e "[ui]\n" \
-                "\tusername = $user_full_name <$default_email>\n" \
+        echo -e "[ui]\nusername = $user_full_name <$default_email>\n" \
             > ~/.hgrc.local
         shift
     fi
