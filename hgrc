@@ -8,6 +8,7 @@ graphlog =
 rebase =
 mq =
 record =
+hgk =
 
 [pager]
 pager = LESS='FSRX' less
