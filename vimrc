@@ -113,7 +113,7 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+                          \ | wincmd p | diffthis
 endif
 
 colorscheme elflord             " My favourite color scheme
@@ -126,7 +126,13 @@ imap <silent> <S-tab> <C-v><tab>
 
 set listchars=tab:>-,trail:.    " Make tabs and trailing spaces visible
 set list                        " This enables the line above
-hi SpecialKey guifg=#222222 guibg=black
+highlight SpecialKey guifg=#222222 guibg=black
+
+highlight ExtraWhitespaceR ctermbg=red guibg=red
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+nnoremap <silent> <Leader>s :match ExtraWhitespace /\s\+$/<cr>
+nnoremap <silent> <Leader>rs :match ExtraWhitespaceR /\s\+$/<cr>
+nnoremap <silent> <Leader>ns :match<cr>
 
 set tabstop=4                   " Tabs are 4 characters wide (company policy)
 set shiftwidth=4
