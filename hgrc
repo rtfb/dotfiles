@@ -1,5 +1,6 @@
 [ui]
 editor = vim
+merge = internal:merge
 
 [extensions]
 pager =
