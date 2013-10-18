@@ -133,6 +133,7 @@ highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 nnoremap <silent> <Leader>s :match ExtraWhitespace /\s\+$/<cr>
 nnoremap <silent> <Leader>rs :match ExtraWhitespaceR /\s\+$/<cr>
 nnoremap <silent> <Leader>ns :match<cr>
+match ExtraWhitespace /\s\+$/
 
 set tabstop=4                   " Tabs are 4 characters wide (company policy)
 set shiftwidth=4
