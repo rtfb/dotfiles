@@ -47,6 +47,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias xs='cd'
 alias vf='cd'
+alias ppjson='xclip -o | python -mjson.tool'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
