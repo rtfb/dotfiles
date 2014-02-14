@@ -5,6 +5,22 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+platform="unknown"
+unamestr=$(uname)
+
+case "$unamestr" in
+    "Linux")
+        platform="linux"
+        ;;
+    "Darwin")
+        platform="osx"
+        ;;
+    "")
+        echo "Unknown platform uname '$unamestr', exiting..."
+        exit
+        ;;
+esac
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -36,12 +52,23 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
+if [[ $platform == "osx" ]]; then
+    alias ls='ls -G'
+fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
 alias du='du -kh'
-alias df='df -kTh'
+case "$platform" in
+    "osx")
+        alias df='df -H'
+        ;;
+    "linux")
+    "")
+        alias df='df -kTh'
+        ;;
+esac
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -82,10 +109,12 @@ export PATH
 
 export EDITOR=vim
 
-if [ -f /etc/bash_completion.d/git ]; then
-    source /etc/bash_completion.d/git
-else
-    source /etc/bash_completion.d/git-prompt
+if [[ $platform == 'linux' ]]; then
+    if [ -f /etc/bash_completion.d/git ]; then
+        source /etc/bash_completion.d/git
+    else
+        source /etc/bash_completion.d/git-prompt
+    fi
 fi
 
 Color_Off="\[\033[0m\]"       # Text Reset
@@ -108,20 +137,24 @@ GIT_PS1_SHOWDIRTYSTATE="1"
 GIT_PS1_SHOWUNTRACKEDFILES="1"
 GIT_PS1_SHOWSTASHSTATE="1"
 #  echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
-export PS1=$Blue$Time24h$Color_Off'$(git branch &>/dev/null;\
-if [ $? -eq 0 ]; then \
-  echo "$( \
-  if [ "$(__git_ps1 %s)" = "`git branch | grep "*" | sed s/"^* "//`" ]; then \
-    # @4 - Clean repository - nothing to commit
-    echo "'$Green'"$(__git_ps1 " (%s)"); \
-  else \
-    # @5 - Changes to working tree
-    echo "'$IRed'"$(__git_ps1 " (%s)"); \
-  fi) '$BYellow$PathShort$Color_Off'\$ "; \
-else \
-  # @2 - Prompt when not in GIT repo
-  echo " '$Yellow$PathShort$Color_Off'\$ "; \
-fi)'
+if [[ $platform == 'linux' ]]; then
+    export PS1=$Blue$Time24h$Color_Off'$(git branch &>/dev/null;\
+    if [ $? -eq 0 ]; then \
+      echo "$( \
+      if [ "$(__git_ps1 %s)" = "`git branch | grep "*" | sed s/"^* "//`" ]; then \
+        # @4 - Clean repository - nothing to commit
+        echo "'$Green'"$(__git_ps1 " (%s)"); \
+      else \
+        # @5 - Changes to working tree
+        echo "'$IRed'"$(__git_ps1 " (%s)"); \
+      fi) '$BYellow$PathShort$Color_Off'\$ "; \
+    else \
+      # @2 - Prompt when not in GIT repo
+      echo " '$Yellow$PathShort$Color_Off'\$ "; \
+    fi)'
+else
+    export PS1=$Blue$Time24h$Color_Off" $Yellow$PathShort$Color_Off\$ "
+fi
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
