@@ -14,8 +14,41 @@ function backup {
     fi
 }
 
-script=`readlink -f $0`
-here=`dirname $script`
+platform="unknown"
+unamestr=$(uname)
+
+case "$unamestr" in
+    "Linux")
+        platform="linux"
+        ;;
+    "Darwin")
+        platform="osx"
+        ;;
+    "")
+        echo "Unknown platform uname '$unamestr', exiting..."
+        exit
+        ;;
+esac
+
+realpath() {
+  OURPWD=$PWD
+  cd "$(dirname "$1")"
+  LINK=$(readlink "$(basename "$1")")
+  while [ "$LINK" ]; do
+    cd "$(dirname "$LINK")"
+    LINK=$(readlink "$(basename "$1")")
+  done
+  REALPATH="$PWD/$(basename "$1")"
+  cd "$OURPWD"
+  echo "$REALPATH"
+}
+
+if [[ $platform == 'linux' ]]; then
+    script=`readlink -f $0`
+    here=`dirname $script`
+elif [[ $platform == 'osx' ]]; then
+    here=$(dirname $(realpath "$0"))
+fi
 
 default_email='vytas@rtfb.lt'
 
@@ -156,5 +189,10 @@ symlink $here/hgrc ~/.hgrc
 #================
 # bash
 #================
-backup ~/.bashrc
-symlink $here/bashrc ~/.bashrc
+if [[ $platform == 'linux' ]]; then
+    backup ~/.bashrc
+    symlink $here/bashrc ~/.bashrc
+elif [[ $platform == 'osx' ]]; then
+    backup ~/.bash_profile
+    symlink $here/bashrc ~/.bash_profile
+fi
