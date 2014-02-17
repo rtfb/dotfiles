@@ -332,6 +332,9 @@ map <leader>q :e ~/buffer<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+" A quick workaround to avoid error highlight for C++11 lambdas
+let c_no_curly_error=1
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
