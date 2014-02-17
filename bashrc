@@ -64,8 +64,7 @@ case "$platform" in
     "osx")
         alias df='df -H'
         ;;
-    "linux")
-    "")
+    "linux" | "")
         alias df='df -kTh'
         ;;
 esac
