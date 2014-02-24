@@ -83,14 +83,32 @@ fi
 #================
 # SourceCodePro font
 #================
+function get_priv_fonts_dir {
+    case $platform in
+        'linux')
+            return $HOME/.fonts
+            ;;
+        'osx')
+            return $HOME/Library/Fonts
+            ;;
+        *)
+            echo 'Font installation not implemented on platform $(platform)!'
+            exit
+            ;;
+    esac
+}
+
 function install_font {
-    if ! [ -f ~/.fonts/SourceCodePro-Regular.ttf] ; then
+    private_fonts=get_priv_fonts_dir()
+    if ! [ -f $private_fonts/SourceCodePro-Regular.ttf] ; then
         wget -O /tmp/SourceCodePro.zip https://github.com/downloads/adobe/Source-Code-Pro/SourceCodePro_FontsOnly-1.010.zip
         unzip -o -x /tmp/SourceCodePro.zip -d /tmp/SourceCodePro
-        mkdir -p ~/.fonts
+        mkdir -p $private_fonts
         chmod +w /tmp/SourceCodePro/*/TTF/*.ttf
-        cp /tmp/SourceCodePro/*/TTF/*.ttf ~/.fonts
-        fc-cache
+        cp /tmp/SourceCodePro/*/TTF/*.ttf $private_fonts
+        if [[ $platform == 'linux' ]]; then
+            fc-cache
+        fi
     fi
 }
 

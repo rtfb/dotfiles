@@ -170,7 +170,11 @@ set nowb
 set noswapfile
 set autoindent
 
-set gfn=SourceCodePro\ 10
+if has("mac")
+    set gfn=Source\ Code\ Pro:h14
+else
+    set gfn=SourceCodePro\ 10
+endif
 
 let g:load_doxygen_syntax=1
 
