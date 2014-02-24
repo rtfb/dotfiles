@@ -24,7 +24,7 @@ case "$unamestr" in
     "Darwin")
         platform="osx"
         ;;
-    "")
+    *)
         echo "Unknown platform uname '$unamestr', exiting..."
         exit
         ;;
