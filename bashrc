@@ -98,7 +98,7 @@ fi
 export GOROOT=~/hacking/go
 export GOPATH=~/sw/gopkgs
 
-PATH=$HOME/sw/gradle-1.7/bin:$GOROOT/bin:${PATH}
+PATH=$HOME/sw/nodejs/bin/:$HOME/sw/gradle-1.7/bin:$GOROOT/bin:${PATH}
 
 # set PATH so it includes user's private bin if it exists
 if [ -d ~/bin ] ; then
@@ -108,6 +108,7 @@ fi
 export PATH
 export EDITOR=vim
 export ANDROID_HOME=$HOME/sw/android-sdk-linux
+export NDKROOT=$HOME/sw/android-ndk-r9b
 
 if [[ $platform == 'linux' ]]; then
     if [ -f /etc/bash_completion.d/git ]; then
