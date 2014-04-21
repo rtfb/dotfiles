@@ -12,7 +12,7 @@ set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
 
 set nobackup        " do not keep a backup file, use versions instead
-set history=500     " keep 5“0 lines of command line history
+set history=500     " keep 500 lines of command line history
 set ruler           " show the cursor position all the time
 set showcmd         " display incomplete commands
 set incsearch       " do incremental searching
@@ -170,7 +170,11 @@ set nowb
 set noswapfile
 set autoindent
 
-set gfn=SourceCodePro\ 10
+if has("mac")
+    set gfn=Source\ Code\ Pro:h14
+else
+    set gfn=SourceCodePro\ 10
+endif
 
 let g:load_doxygen_syntax=1
 
@@ -331,6 +335,9 @@ map <leader>q :e ~/buffer<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
+
+" A quick workaround to avoid error highlight for C++11 lambdas
+let c_no_curly_error=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions

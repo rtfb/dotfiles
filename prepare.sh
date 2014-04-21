@@ -14,8 +14,41 @@ function backup {
     fi
 }
 
-script=`readlink -f $0`
-here=`dirname $script`
+platform="unknown"
+unamestr=$(uname)
+
+case "$unamestr" in
+    "Linux")
+        platform="linux"
+        ;;
+    "Darwin")
+        platform="osx"
+        ;;
+    *)
+        echo "Unknown platform uname '$unamestr', exiting..."
+        exit
+        ;;
+esac
+
+realpath() {
+  OURPWD=$PWD
+  cd "$(dirname "$1")"
+  LINK=$(readlink "$(basename "$1")")
+  while [ "$LINK" ]; do
+    cd "$(dirname "$LINK")"
+    LINK=$(readlink "$(basename "$1")")
+  done
+  REALPATH="$PWD/$(basename "$1")"
+  cd "$OURPWD"
+  echo "$REALPATH"
+}
+
+if [[ $platform == 'linux' ]]; then
+    script=`readlink -f $0`
+    here=`dirname $script`
+elif [[ $platform == 'osx' ]]; then
+    here=$(dirname $(realpath "$0"))
+fi
 
 default_email='vytas@rtfb.lt'
 
@@ -50,14 +83,32 @@ fi
 #================
 # SourceCodePro font
 #================
+function get_priv_fonts_dir {
+    case $platform in
+        'linux')
+            return $HOME/.fonts
+            ;;
+        'osx')
+            return $HOME/Library/Fonts
+            ;;
+        *)
+            echo 'Font installation not implemented on platform $(platform)!'
+            exit
+            ;;
+    esac
+}
+
 function install_font {
-    if ! [ -f ~/.fonts/SourceCodePro-Regular.ttf] ; then
+    private_fonts=get_priv_fonts_dir()
+    if ! [ -f $private_fonts/SourceCodePro-Regular.ttf] ; then
         wget -O /tmp/SourceCodePro.zip https://github.com/downloads/adobe/Source-Code-Pro/SourceCodePro_FontsOnly-1.010.zip
         unzip -o -x /tmp/SourceCodePro.zip -d /tmp/SourceCodePro
-        mkdir -p ~/.fonts
+        mkdir -p $private_fonts
         chmod +w /tmp/SourceCodePro/*/TTF/*.ttf
-        cp /tmp/SourceCodePro/*/TTF/*.ttf ~/.fonts
-        fc-cache
+        cp /tmp/SourceCodePro/*/TTF/*.ttf $private_fonts
+        if [[ $platform == 'linux' ]]; then
+            fc-cache
+        fi
     fi
 }
 
@@ -156,5 +207,10 @@ symlink $here/hgrc ~/.hgrc
 #================
 # bash
 #================
-backup ~/.bashrc
-symlink $here/bashrc ~/.bashrc
+if [[ $platform == 'linux' ]]; then
+    backup ~/.bashrc
+    symlink $here/bashrc ~/.bashrc
+elif [[ $platform == 'osx' ]]; then
+    backup ~/.bash_profile
+    symlink $here/bashrc ~/.bash_profile
+fi
