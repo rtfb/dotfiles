@@ -107,8 +107,22 @@ fi
 
 export PATH
 export EDITOR=vim
-export ANDROID_HOME=$HOME/sw/android-sdk-linux
 export NDKROOT=$HOME/sw/android-ndk-r9b
+
+case "$platform" in
+    "linux")
+        export ANDROID_HOME=$HOME/sw/android-sdk-linux
+        ;;
+    "osx")
+        export ANDROID_HOME=$HOME/sw/android-sdk-macosx
+        ;;
+    "win")
+        export ANDROID_HOME=/e/sw/android-sdk/
+        ;;
+    *)
+        echo "WARNING: Unknown platform '$platform', ANDROID_HOME not set."
+        ;;
+esac
 
 if [[ $platform == 'linux' ]]; then
     if [ -f /etc/bash_completion.d/git ]; then
