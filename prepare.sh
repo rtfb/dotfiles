@@ -214,3 +214,12 @@ elif [[ $platform == 'osx' ]]; then
     backup ~/.bash_profile
     symlink $here/bashrc ~/.bash_profile
 fi
+
+#================
+# i3
+#================
+backup ~/.i3/config
+symlink $here/i3-config ~/.i3/config
+symlink $here/autostart ~/.i3/autostart
+backup ~/.i3status.conf
+symlink $here/i3status.conf ~/.i3status.conf

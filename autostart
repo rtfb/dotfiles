@@ -1,0 +1,6 @@
+#!/bin/sh
+
+parcellite &
+dropbox start &
+setxkbmap -option caps:escape
+numlockx
