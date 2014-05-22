@@ -228,3 +228,8 @@ symlink $here/autostart ~/.i3/autostart
 backup ~/.i3status.conf
 symlink $here/i3status.conf ~/.i3status.conf
 cp $here/lang.sh ~/bin/
+
+#================
+# misc
+#================
+cp $here/ekto.py ~/bin/
