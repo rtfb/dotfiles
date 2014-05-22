@@ -168,6 +168,10 @@ if [ $full_install -eq 1 ]; then
     install_vim_plugins
 fi
 
+if ! [ -d $HOME/bin ]; then
+    mkdir $HOME/bin
+fi
+
 #================
 # Vim
 #================
@@ -223,3 +227,4 @@ symlink $here/i3-config ~/.i3/config
 symlink $here/autostart ~/.i3/autostart
 backup ~/.i3status.conf
 symlink $here/i3status.conf ~/.i3status.conf
+cp $here/lang.sh ~/bin/
