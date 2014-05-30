@@ -99,7 +99,7 @@ function get_priv_fonts_dir {
 }
 
 function install_font {
-    private_fonts=get_priv_fonts_dir()
+    private_fonts=$(get_priv_fonts_dir)
     if ! [ -f $private_fonts/SourceCodePro-Regular.ttf] ; then
         wget -O /tmp/SourceCodePro.zip https://github.com/downloads/adobe/Source-Code-Pro/SourceCodePro_FontsOnly-1.010.zip
         unzip -o -x /tmp/SourceCodePro.zip -d /tmp/SourceCodePro
