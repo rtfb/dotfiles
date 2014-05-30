@@ -165,7 +165,6 @@ function symlink {
 
 if [ $full_install -eq 1 ]; then
     install_font
-    install_vim_plugins
 fi
 
 if ! [ -d $HOME/bin ]; then
@@ -187,6 +186,10 @@ mkdir -p ~/.vim/spell
 # barks at me with some error. I don't know what's going on, but I have a
 # workaround:
 cp lt.utf-8.spl ~/.vim/spell/lt.utf-8.spl
+
+if [ $full_install -eq 1 ]; then
+    install_vim_plugins
+fi
 
 # ftplugin for .po files
 symlink $here/vim/ftplugin/po.vim ~/.vim/ftplugin/po.vim
