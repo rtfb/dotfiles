@@ -157,9 +157,19 @@ function install_vim_plugins {
 }
 
 function symlink {
-    if [ -h $2 ]; then
+    # If it is a regular file, move it out of the way:
+    if ! [ -L $2 ]; then
+        mv $2 $2~
+    fi
+    # If it exists (or is a valid symlink), do nothing:
+    if [ -e $2 ]; then
         return
     fi
+    # If it is a symlink, unlink it:
+    if [ -L $2 ]; then
+        rm $2
+    fi
+    # Now establish a new link:
     ln -s $1 $2
 }
 
@@ -210,33 +220,27 @@ symlink $here/vim/syntax/hgcommit.vim ~/.vim/syntax/hgcommit.vim
 #================
 # Git
 #================
-backup ~/.gitconfig
 symlink $here/gitconfig ~/.gitconfig
 
 #================
 # Hg
 #================
-backup ~/.hgrc
 symlink $here/hgrc ~/.hgrc
 
 #================
 # bash
 #================
 if [[ $platform == 'linux' ]]; then
-    backup ~/.bashrc
     symlink $here/bashrc ~/.bashrc
 elif [[ $platform == 'osx' ]]; then
-    backup ~/.bash_profile
     symlink $here/bashrc ~/.bash_profile
 fi
 
 #================
 # i3
 #================
-backup ~/.i3/config
 symlink $here/i3-config ~/.i3/config
 symlink $here/autostart ~/.i3/autostart
-backup ~/.i3status.conf
 symlink $here/i3status.conf ~/.i3status.conf
 cp $here/lang.sh ~/bin/
 
