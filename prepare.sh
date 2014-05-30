@@ -185,7 +185,15 @@ mkdir -p ~/.vim/spell
 # but for some reason, I get a file that is one byte short from there and Vim
 # barks at me with some error. I don't know what's going on, but I have a
 # workaround:
-cp lt.utf-8.spl ~/.vim/spell/lt.utf-8.spl
+#cp lt.utf-8.spl ~/.vim/spell/lt.utf-8.spl
+
+# The above is no longer true under Ubuntu 14.04, so revert to downloading. But
+# I leave the hack around just in case I'll need it on some older version.
+# Would be best to figure out how can this be detected and do the right thing
+# in the right circumstances
+if [ $full_install -eq 1 ]; then
+    curl -o ~/.vim/spell/lt.utf-8.spl http://ftp.vim.org/vim/runtime/spell/lt.utf-8.spl
+fi
 
 if [ $full_install -eq 1 ]; then
     install_vim_plugins
