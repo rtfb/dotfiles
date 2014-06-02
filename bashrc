@@ -124,6 +124,12 @@ case "$platform" in
         ;;
 esac
 
+case $(hostname) in
+    "dungeon")
+        export MUSIC_DIR=$HOME/Muzika
+        ;;
+esac
+
 if [[ $platform == 'linux' ]]; then
     if [ -f /etc/bash_completion.d/git ]; then
         source /etc/bash_completion.d/git

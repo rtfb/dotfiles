@@ -18,7 +18,7 @@ def main():
         unzip_path = ' - '.join(parts[:-1])
     else:
         unzip_path = os.path.join(parts[0], parts[2] + ' - ' + parts[1])
-    mus = '/media/rtfb/Data/music/'
+    mus = os.environ['MUSIC_DIR']
     path = os.path.join(mus, unzip_path)
     if not dry_run:
         os.makedirs(path)
