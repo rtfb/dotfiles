@@ -128,6 +128,9 @@ case $(hostname) in
     "dungeon")
         export MUSIC_DIR=$HOME/Muzika
         ;;
+    "vsaltenis")
+        export MUSIC_DIR=/media/rtfb/Data/music/
+        ;;
 esac
 
 if [[ $platform == 'linux' ]]; then
