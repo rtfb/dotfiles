@@ -10,6 +10,7 @@ rebase =
 mq =
 record =
 hgk =
+histedit =
 
 [pager]
 pager = LESS='FSRX' less
