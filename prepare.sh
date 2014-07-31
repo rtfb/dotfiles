@@ -245,6 +245,11 @@ symlink $here/i3status.conf ~/.i3status.conf
 cp $here/lang.sh ~/bin/
 
 #================
+# gdb
+#================
+symlink $here/gdbinit ~/.gdbinit
+
+#================
 # misc
 #================
 cp $here/ekto.py ~/bin/
