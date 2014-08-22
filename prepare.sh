@@ -255,3 +255,19 @@ symlink $here/gdbinit ~/.gdbinit
 # misc
 #================
 cp $here/ekto.py ~/bin/
+
+if [ $full_install -eq 1 ]; then
+    if ! [ -f ~/hacking/i3lock/.git/config ] ; then
+        pushd ~/hacking/
+        git clone git@github.com:rtfb/i3lock.git
+        cd i3lock
+    else
+        pushd ~/hacking/i3lock
+        git pull
+    fi
+
+    make
+    popd
+fi
+
+symlink ~/hacking/i3lock/i3lock ~/bin/i3lock
