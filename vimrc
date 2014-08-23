@@ -11,9 +11,7 @@ set nocompatible
 set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
 
-set nobackup        " do not keep a backup file, use versions instead
 set history=500     " keep 500 lines of command line history
-set ruler           " show the cursor position all the time
 set showcmd         " display incomplete commands
 set incsearch       " do incremental searching
 
@@ -27,7 +25,7 @@ set so=7
 set cmdheight=2
 
 " A buffer becomes hidden when it is abandoned
-set hid
+set hidden
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
@@ -139,7 +137,6 @@ match ExtraWhitespace /\s\+$/
 
 set tabstop=4                   " Tabs are 4 characters wide (company policy)
 set shiftwidth=4
-set hlsearch                    " highlight search results
 set smarttab
 set number                      " show line numbers
 
@@ -149,6 +146,8 @@ if has("gui_running")
                                 " estate
     set guioptions-=m           " no menu either
     set guioptions-=e           " no GUI tabs
+    set guioptions+=c           " use console dialogs instead of popup dialogs
+                                " for simple choices
 endif
 
 set ignorecase
@@ -218,10 +217,6 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " Ignore these files when completing names and in Explorer
 set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.so,*.obj,*.swp,*.pyc
 
-" use console dialogs instead of popup dialogs for simple choices
-set guioptions+=c
-
-set hidden
 nnoremap ' `
 nnoremap ` '
 
