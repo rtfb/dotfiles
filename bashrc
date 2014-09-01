@@ -113,6 +113,9 @@ export NDKROOT=$HOME/sw/android-ndk-r9b
 case "$platform" in
     "linux")
         export ANDROID_HOME=$HOME/sw/android-sdk-linux
+        export ARDUINO_DIR=/usr/share/arduino
+        export ARDMK_DIR=/usr/share/arduino
+        export AVR_TOOLS_DIR=/usr
         ;;
     "osx")
         export ANDROID_HOME=$HOME/sw/android-sdk-macosx
