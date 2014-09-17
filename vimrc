@@ -97,9 +97,6 @@ if has("autocmd")
 
 endif " has("autocmd")
 
-set ai "Auto indent
-set si "Smart indent
-
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
@@ -170,6 +167,7 @@ set nobackup
 set nowb
 set noswapfile
 set autoindent
+set smartindent
 
 if has("mac")
     set gfn=Source\ Code\ Pro:h14
