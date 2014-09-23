@@ -96,6 +96,10 @@ if has("autocmd")
   " Limit the line length for this mode
   autocmd FileType markdown set tw=80
 
+  " No color column and spell checking in man pages
+  autocmd FileType man set colorcolumn=0
+  autocmd FileType man set nospell
+
 endif " has("autocmd")
 
 """"""""""""""""""""""""""""""

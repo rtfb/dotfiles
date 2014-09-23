@@ -71,6 +71,8 @@ export GOROOT=~/hacking/go
 export GOPATH=~/sw/gopkgs
 
 PATH=$HOME/sw/nodejs/bin/:$HOME/sw/gradle-1.7/bin:$GOROOT/bin:${PATH}
+# http://zameermanji.com/blog/2012/12/30/using-vim-as-manpager/
+export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
 # set PATH so it includes user's private bin if it exists
 if [ -d ~/bin ] ; then
