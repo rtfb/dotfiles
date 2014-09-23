@@ -14,6 +14,7 @@ set whichwrap+=<,>,h,l
 set history=500     " keep 500 lines of command line history
 set showcmd         " display incomplete commands
 set incsearch       " do incremental searching
+set colorcolumn=81  " nag myself about long lines
 
 " Fast saving
 nmap <leader>w :w!<cr>
