@@ -69,6 +69,7 @@ fi
 
 export GOROOT=~/hacking/go
 export GOPATH=~/sw/gopkgs
+export GOBIN=$GOPATH/bin
 
 PATH=$HOME/sw/nodejs/bin/:$HOME/sw/gradle-1.7/bin:$GOROOT/bin:${PATH}
 # http://zameermanji.com/blog/2012/12/30/using-vim-as-manpager/
