@@ -71,7 +71,25 @@ export GOROOT=~/hacking/go
 export GOPATH=~/sw/gopkgs
 export GOBIN=$GOPATH/bin
 
-PATH=$HOME/sw/nodejs/bin/:$HOME/sw/gradle-1.7/bin:$GOROOT/bin:${PATH}
+CDPATH=$GOPATH/src/github.com:$GOPATH/src/code.google.com/p:$GOPATH/src/bitbucket.org
+
+# (http://talks.golang.org/2014/organizeio.slide#14)
+# This lets you move around using the Go tool's path names:
+# $ gocd .../lint
+# /tmp/gows/src/github.com/golang/lint
+# $
+gocd() {
+    cd `go list -f '{{.Dir}}' $1`
+}
+
+# http://dave.cheney.net/2014/09/14/go-list-your-swiss-army-knife
+deps() {
+    go list -f '{{ join .Deps  "\n"}}' .
+}
+
+PATH=$HOME/sw/nodejs/bin/:$HOME/sw/gradle-1.7/bin:${PATH}
+PATH=$GOROOT/bin:$GOPATH/bin:${PATH}
+
 # http://zameermanji.com/blog/2012/12/30/using-vim-as-manpager/
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
