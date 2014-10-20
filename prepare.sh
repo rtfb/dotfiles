@@ -58,16 +58,16 @@ user_gecos_field=`echo "$user_record" | cut -d ':' -f 5`
 user_full_name=`echo "$user_gecos_field" | cut -d ',' -f 1`
 full_install=0
 
-if [ $# -gt 0 ]; then
-    if [ $1 == "-h" ]; then
+if [[ $# -gt 0 ]]; then
+    if [[ $1 == "-h" ]]; then
         usage
         exit
     fi
-    if [ $1 == "-f" ]; then
+    if [[ $1 == "-f" ]]; then
         full_install=1
         shift
     fi
-    if [ $1 == "-d" ]; then
+    if [[ $1 == "-d" ]]; then
         backup ~/.hgrc.local
         backup ~/.gitconfig.local
         echo -e "[user]\n" \
@@ -86,10 +86,10 @@ fi
 function get_priv_fonts_dir {
     case $platform in
         'linux')
-            return $HOME/.fonts
+            echo $HOME/.fonts
             ;;
         'osx')
-            return $HOME/Library/Fonts
+            echo $HOME/Library/Fonts
             ;;
         *)
             echo 'Font installation not implemented on platform $(platform)!'
@@ -100,7 +100,7 @@ function get_priv_fonts_dir {
 
 function install_font {
     private_fonts=$(get_priv_fonts_dir)
-    if ! [ -f $private_fonts/SourceCodePro-Regular.ttf] ; then
+    if ! [[ -f $private_fonts/SourceCodePro-Regular.ttf ]] ; then
         wget -O /tmp/SourceCodePro.zip https://github.com/downloads/adobe/Source-Code-Pro/SourceCodePro_FontsOnly-1.010.zip
         unzip -o -x /tmp/SourceCodePro.zip -d /tmp/SourceCodePro
         mkdir -p $private_fonts
@@ -201,7 +201,7 @@ mkdir -p ~/.vim/spell
 # I leave the hack around just in case I'll need it on some older version.
 # Would be best to figure out how can this be detected and do the right thing
 # in the right circumstances
-if [ $full_install -eq 1 ]; then
+if [[ $full_install -eq 1 ]]; then
     curl -o ~/.vim/spell/lt.utf-8.spl http://ftp.vim.org/vim/runtime/spell/lt.utf-8.spl
 fi
 
@@ -241,6 +241,7 @@ symlink $here/bash_aliases ~/.bash_aliases
 #================
 # i3
 #================
+mkdir -p ~/.i3
 symlink $here/i3-config ~/.i3/config
 symlink $here/autostart ~/.i3/autostart
 symlink $here/i3status.conf ~/.i3status.conf
