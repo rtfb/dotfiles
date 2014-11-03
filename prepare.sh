@@ -158,7 +158,7 @@ function install_vim_plugins {
 
 function symlink {
     # If it is a regular file, move it out of the way:
-    if ! [ -L $2 ]; then
+    if [ -f $2 ]; then
         mv $2 $2~
     fi
     # If it exists (or is a valid symlink), do nothing:
