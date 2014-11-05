@@ -261,7 +261,7 @@ if [ $full_install -eq 1 ]; then
     cd i3lock
 
     if ! [ -f $here/i3lock/.git/config ] ; then
-        git clone git@github.com:rtfb/i3lock.git
+        git clone https://github.com/rtfb/i3lock.git
     else
         git pull
     fi
