@@ -101,7 +101,7 @@ function get_priv_fonts_dir {
 function install_font {
     private_fonts=$(get_priv_fonts_dir)
     if ! [[ -f $private_fonts/SourceCodePro-Regular.ttf ]] ; then
-        wget -O /tmp/SourceCodePro.zip https://github.com/downloads/adobe-fonts/Source-Code-Pro/SourceCodePro_FontsOnly-1.010.zip
+        curl -o /tmp/SourceCodePro.zip https://github.com/downloads/adobe-fonts/Source-Code-Pro/SourceCodePro_FontsOnly-1.010.zip
         unzip -o -x /tmp/SourceCodePro.zip -d /tmp/SourceCodePro
         mkdir -p $private_fonts
         chmod +w /tmp/SourceCodePro/*/TTF/*.ttf
@@ -115,23 +115,23 @@ function install_font {
 function install_vim_plugins {
     # Handle plugins:
     # Fugitive: http://www.vim.org/scripts/script.php?script_id=2975
-    wget -O /tmp/fugitive.zip http://www.vim.org/scripts/download_script.php?src_id=15542
+    curl -o /tmp/fugitive.zip http://www.vim.org/scripts/download_script.php?src_id=15542
     unzip -o -x /tmp/fugitive.zip -d ~/.vim
 
     # Unimpaired: http://www.vim.org/scripts/script.php?script_id=1590
-    wget -O /tmp/unimpaired.zip http://www.vim.org/scripts/download_script.php?src_id=12570
+    curl -o /tmp/unimpaired.zip http://www.vim.org/scripts/download_script.php?src_id=12570
     unzip -o -x /tmp/unimpaired.zip -d ~/.vim
 
     # Bufexplorer: http://www.vim.org/scripts/script.php?script_id=42
-    wget -O /tmp/bufexplorer.zip http://www.vim.org/scripts/download_script.php?src_id=14208
+    curl -o /tmp/bufexplorer.zip http://www.vim.org/scripts/download_script.php?src_id=14208
     unzip -o -x /tmp/bufexplorer.zip -d ~/.vim
 
     # Matchit
-    wget -O /tmp/matchit.zip http://www.vim.org/scripts/download_script.php?src_id=8196
+    curl -o /tmp/matchit.zip http://www.vim.org/scripts/download_script.php?src_id=8196
     unzip -o -x /tmp/matchit.zip -d ~/.vim
 
     # Supertab: http://www.vim.org/scripts/script.php?script_id=1643
-    wget -O /tmp/supertab.vmb http://www.vim.org/scripts/download_script.php?src_id=18075
+    curl -o /tmp/supertab.vmb http://www.vim.org/scripts/download_script.php?src_id=18075
     vim -c 'so %' -c 'q' /tmp/supertab.vmb
 
     # CtrlP: http://kien.github.com/ctrlp.vim/
@@ -191,7 +191,7 @@ mkdir -p ~/.vim/syntax
 mkdir -p ~/.vim/spell
 
 # I should be doing this:
-#wget -O ~/.vim/spell/lt.utf-8.spl http://ftp.vim.org/vim/runtime/spell/lt.utf-8.spl
+#curl -o ~/.vim/spell/lt.utf-8.spl http://ftp.vim.org/vim/runtime/spell/lt.utf-8.spl
 # but for some reason, I get a file that is one byte short from there and Vim
 # barks at me with some error. I don't know what's going on, but I have a
 # workaround:
