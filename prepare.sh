@@ -257,17 +257,19 @@ symlink $here/gdbinit ~/.gdbinit
 #================
 cp $here/ekto.py ~/bin/
 
-if [ $full_install -eq 1 ]; then
-    cd i3lock
+if [[ $platform == 'linux' ]]; then
+    if [ $full_install -eq 1 ]; then
+        cd i3lock
 
-    if ! [ -f $here/i3lock/.git/config ] ; then
-        git clone https://github.com/rtfb/i3lock.git
-    else
-        git pull
+        if ! [ -f $here/i3lock/.git/config ] ; then
+            git clone https://github.com/rtfb/i3lock.git
+        else
+            git pull
+        fi
+
+        make
+        cd ..
     fi
 
-    make
-    cd ..
+    symlink $here/i3lock/i3lock ~/bin/i3lock
 fi
-
-symlink $here/i3lock/i3lock ~/bin/i3lock
