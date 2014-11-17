@@ -213,7 +213,6 @@ fi
 symlink $here/vim/ftplugin/po.vim ~/.vim/ftplugin/po.vim
 
 # ftplugin and syntax for hg commits
-symlink $here/vim/ftdetect/hgcommit.vim ~/.vim/ftdetect/hgcommit.vim
 symlink $here/vim/ftplugin/hgcommit.vim ~/.vim/ftplugin/hgcommit.vim
 symlink $here/vim/syntax/hgcommit.vim ~/.vim/syntax/hgcommit.vim
 
