@@ -151,7 +151,7 @@ function install_vim_plugins {
         rm -rf $vim_golang
     fi
 
-    git clone git://github.com/jnwhiteh/vim-golang.git $vim_golang
+    git clone git://github.com/rtfb/vim-golang.git $vim_golang
     rm -rf $vim_golang/.git
     cp -r $vim_golang/* $HOME/.vim
 }
