@@ -17,19 +17,23 @@ def unzip_archive(archive, target_dir):
         open(os.path.join(target_dir, out_file_name), 'w').write(z.read(zinfo))
 
 
+def target_dir_from_archive_name(arch):
+    bn = os.path.basename(arch)
+    bn = os.path.splitext(bn)[0]
+    parts = bn.split(' - ')
+    if parts[0] == 'VA':
+        return ' - '.join(parts[:-1])
+    else:
+        return os.path.join(parts[0], parts[2] + ' - ' + parts[1])
+
+
 def main():
     dry_run = False
     input_file = sys.argv[1]
     if sys.argv[1] == '-n':
         dry_run = True
         input_file = sys.argv[2]
-    bn = os.path.basename(input_file)
-    bn = os.path.splitext(bn)[0]
-    parts = bn.split(' - ')
-    if parts[0] == 'VA':
-        unzip_path = ' - '.join(parts[:-1])
-    else:
-        unzip_path = os.path.join(parts[0], parts[2] + ' - ' + parts[1])
+    unzip_path = target_dir_from_archive_name(input_file)
     mus = os.environ['MUSIC_DIR']
     path = os.path.join(mus, unzip_path)
     dry_prefix = ''
