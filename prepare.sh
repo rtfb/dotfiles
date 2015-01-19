@@ -254,7 +254,7 @@ symlink $here/gdbinit ~/.gdbinit
 #================
 # misc
 #================
-cp $here/ekto.py ~/bin/
+symlink $here/ekto.py ~/bin/ekto.py
 
 if [[ $platform == 'linux' ]]; then
     if [ $full_install -eq 1 ]; then
