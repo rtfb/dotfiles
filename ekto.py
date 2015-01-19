@@ -1,12 +1,15 @@
 #!/usr/bin/env python
 
 import os
+import shutil
 import sys
+import tempfile
 import zipfile
 
 
-def unzip_archive(archive, target_dir):
-    os.makedirs(target_dir)
+def unzip_archive(archive):
+    tmp_dir = tempfile.mkdtemp('', 'EKTOPLASM_')
+    print('(via temp dir "%s")' % tmp_dir)
     z = zipfile.ZipFile(archive)
     infolist = z.infolist()
     for zinfo in infolist:
@@ -14,7 +17,8 @@ def unzip_archive(archive, target_dir):
             out_file_name = zinfo.filename.decode('utf-8')
         else:
             out_file_name = zinfo.filename.decode('cp437')
-        open(os.path.join(target_dir, out_file_name), 'w').write(z.read(zinfo))
+        open(os.path.join(tmp_dir, out_file_name), 'w').write(z.read(zinfo))
+    return tmp_dir
 
 
 def target_dir_from_archive_name(arch):
@@ -39,11 +43,9 @@ def main():
     dry_prefix = ''
     if dry_run:
         dry_prefix = '[DRY] '
-    print('%sUnzipping "%s" to "%s"...' % (dry_prefix, input_file, path))
+    print('%sUnpacking "%s" to "%s"...' % (dry_prefix, input_file, path))
     if not dry_run:
-    # TODO: don't extract it straight into MUSIC_DIR, extract it to temp
-    # instead and move to the final place.
-        unzip_archive(input_file, path)
+        shutil.move(unzip_archive(input_file), path)
 
 
 if __name__ == '__main__':
