@@ -125,7 +125,10 @@ case $(hostname) in
         export MUSIC_DIR=$HOME/Muzika
         ;;
     "vsaltenis")
-        export MUSIC_DIR=/media/rtfb/Data/music/
+        export MUSIC_DIR=/media/rtfb/Data/music
+        ;;
+    "vsaltenis2")
+        export MUSIC_DIR=$HOME/Music
         ;;
 esac
 
