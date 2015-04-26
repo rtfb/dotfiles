@@ -113,11 +113,6 @@ function install_font {
 }
 
 function install_vim_plugins {
-    # Handle plugins:
-    # Fugitive: http://www.vim.org/scripts/script.php?script_id=2975
-    curl -o /tmp/fugitive.zip http://www.vim.org/scripts/download_script.php?src_id=15542
-    unzip -o -x /tmp/fugitive.zip -d ~/.vim
-
     # Unimpaired: http://www.vim.org/scripts/script.php?script_id=1590
     curl -o /tmp/unimpaired.zip http://www.vim.org/scripts/download_script.php?src_id=12570
     unzip -o -x /tmp/unimpaired.zip -d ~/.vim
@@ -205,9 +200,16 @@ if [[ $full_install -eq 1 ]]; then
     curl -o ~/.vim/spell/lt.utf-8.spl http://ftp.vim.org/vim/runtime/spell/lt.utf-8.spl
 fi
 
-if [ $full_install -eq 1 ]; then
-    install_vim_plugins
+if [[ $full_install -eq 1 ]]; then
+    if ! [[ -f ~/.vim/bundle/Vundle.vim ]]; then
+        git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    fi
+    vim +PluginInstall +qall
 fi
+
+#if [ $full_install -eq 1 ]; then
+#    install_vim_plugins
+#fi
 
 # ftplugin for .po files
 symlink $here/vim/ftplugin/po.vim ~/.vim/ftplugin/po.vim
