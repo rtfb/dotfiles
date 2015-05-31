@@ -67,7 +67,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-export GOROOT=~/hacking/go
+if [ -d ~/hacking/go ]; then
+    export GOROOT=~/hacking/go
+fi
+
 export GOPATH=~/sw/gopkgs
 export GOBIN=$GOPATH/bin
 
@@ -88,7 +91,10 @@ deps() {
 }
 
 PATH=$HOME/sw/nodejs/bin/:$HOME/sw/gradle-1.7/bin:${PATH}
-PATH=$GOROOT/bin:$GOPATH/bin:${PATH}
+PATH=$GOPATH/bin:${PATH}
+if [ -d $GOROOT/bin ]; then
+    PATH=$GOROOT/bin:${PATH}
+fi
 
 # http://zameermanji.com/blog/2012/12/30/using-vim-as-manpager/
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
