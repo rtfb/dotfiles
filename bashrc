@@ -21,6 +21,11 @@ case "$unamestr" in
         ;;
 esac
 
+# Improve autocompletion on OSX:
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
