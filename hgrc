@@ -13,7 +13,7 @@ hgk =
 histedit =
 
 [pager]
-pager = LESS='FSRX' less
+pager = LESS='FSrX' less
 
 [diff]
 git = True
