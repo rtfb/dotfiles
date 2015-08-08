@@ -257,20 +257,3 @@ symlink $here/gdbinit ~/.gdbinit
 # misc
 #================
 symlink $here/ekto.py ~/bin/ekto.py
-
-if [[ $platform == 'linux' ]]; then
-    if [ $full_install -eq 1 ]; then
-        cd i3lock
-
-        if ! [ -f $here/i3lock/.git/config ] ; then
-            git clone https://github.com/rtfb/i3lock.git
-        else
-            git pull
-        fi
-
-        make
-        cd ..
-    fi
-
-    symlink $here/i3lock/i3lock ~/bin/i3lock
-fi
