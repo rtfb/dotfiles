@@ -1,6 +1,6 @@
 #!/bin/sh
 
 parcellite &
-dropbox start &
+~/.dropbox-dist/dropboxd start &
 setxkbmap -option caps:escape
 numlockx
