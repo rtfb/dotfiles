@@ -74,6 +74,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+if [ -d ~/sw/go ]; then
+    export GOROOT=~/sw/go
+fi
+
 if [ -d ~/hacking/go ]; then
     export GOROOT=~/hacking/go
 fi
@@ -81,7 +85,7 @@ fi
 export GOPATH=~/sw/gopkgs
 export GOBIN=$GOPATH/bin
 
-CDPATH=$GOPATH/src/github.com:$GOPATH/src/code.google.com/p:$GOPATH/src/bitbucket.org
+CDPATH=$CDPATH:$GOPATH/src/github.com:$GOPATH/src/code.google.com/p:$GOPATH/src/bitbucket.org
 
 # (http://talks.golang.org/2014/organizeio.slide#14)
 # This lets you move around using the Go tool's path names:
