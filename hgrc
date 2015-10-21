@@ -12,6 +12,7 @@ record =
 hgk =
 histedit =
 shelve =
+extdiff=
 
 [pager]
 pager = LESS='FSRX' less
@@ -23,3 +24,6 @@ git = True
 
 [tortoisehg]
 vdiff = meld
+
+[extdiff]
+cmd.vdiff = meld
