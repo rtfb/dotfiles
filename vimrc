@@ -20,7 +20,7 @@ Plugin 'fatih/vim-go'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" let g:go_fmt_command = 'goimports'
+let g:go_fmt_command = 'goimports'
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
