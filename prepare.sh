@@ -238,6 +238,7 @@ elif [[ $platform == 'osx' ]]; then
 fi
 
 symlink $here/bash_aliases ~/.bash_aliases
+symlink $here/profile ~/.profile
 
 #================
 # i3

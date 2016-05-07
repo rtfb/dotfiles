@@ -74,19 +74,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-if [ -d ~/sw/go ]; then
-    export GOROOT=~/sw/go
-fi
-
-if [ -d ~/hacking/go ]; then
-    export GOROOT=~/hacking/go
-fi
-
-export GOPATH=~/sw/gopkgs
-export GOBIN=$GOPATH/bin
-
-CDPATH=$CDPATH:$GOPATH/src/github.com:$GOPATH/src/code.google.com/p:$GOPATH/src/bitbucket.org
-
 # (http://talks.golang.org/2014/organizeio.slide#14)
 # This lets you move around using the Go tool's path names:
 # $ gocd .../lint
@@ -101,23 +88,8 @@ deps() {
     go list -f '{{ join .Deps  "\n"}}' .
 }
 
-PATH=$HOME/sw/nodejs/bin/:$HOME/sw/gradle-1.7/bin:${PATH}
-PATH=$GOPATH/bin:${PATH}
-if [ -d $GOROOT/bin ]; then
-    PATH=$GOROOT/bin:${PATH}
-fi
-
 # http://zameermanji.com/blog/2012/12/30/using-vim-as-manpager/
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
-
-# set PATH so it includes user's private bin if it exists
-if [ -d ~/bin ] ; then
-    PATH=~/bin:"${PATH}"
-fi
-
-export PATH
-export EDITOR=vim
-export NDKROOT=$HOME/sw/android-ndk-r9b
 
 case "$platform" in
     "linux")
