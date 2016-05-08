@@ -36,8 +36,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=1000000
+HISTFILESIZE=2000000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -226,3 +226,5 @@ function cbhs() {
     if [ $# -gt 0 ] ; then num_lines=$1; fi
     cat $HISTFILE | tail -n $num_lines | cb
 }
+
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
