@@ -20,6 +20,19 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # chose a FreeType font, such as:
 # font pango:DejaVu Sans Mono 10
 
+## Manual management of external displays
+## Set the shortcuts and what they do
+set $mode_display Ext Screen (m) External ON, (n) External OFF
+mode "$mode_display" {
+    bindsym m exec --no-startup-id xrandr --output DP2-2 --auto --right-of eDP1, mode "default"
+    bindsym n exec --no-startup-id xrandr --output DP2-2 --auto --off, mode "default"
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+# Declare here the shortcut to bring the display selection menu
+bindsym $mod+x mode "$mode_display"
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
