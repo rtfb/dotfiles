@@ -17,7 +17,6 @@ PATH=$HOME/sw/gradle-1.7/bin:${PATH}
 PATH=$GOPATH/bin:${PATH}
 PATH=$GOROOT/bin:${PATH}
 PATH=$HOME/bin:${PATH}
-PATH=$HOME/astro/sw/theli/theli/bin/Linux_64:${PATH}
 
 export PATH
 export EDITOR=vim
