@@ -22,3 +22,9 @@ PATH=$HOME/astro/sw/theli/theli/bin/Linux_64:${PATH}
 export PATH
 export EDITOR=vim
 export NDKROOT=$HOME/sw/android-ndk-r9b
+
+if [ "$0" = "/usr/sbin/lightdm-session" -a "$DESKTOP_SESSION" = "i3" ]; then
+    export $(gnome-keyring-daemon --start --components=ssh)
+fi
+
+eval "$(ssh-agent -s)"

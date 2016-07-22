@@ -208,4 +208,5 @@ bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 # scrot & gimp - select window or rectangle
 bindsym Mod1+Print --release exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 
+exec --no-startup-id /usr/bin/gnome-settings-daemon
 exec ~/.i3/autostart
