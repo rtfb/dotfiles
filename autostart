@@ -2,5 +2,5 @@
 
 parcellite &
 ~/.dropbox-dist/dropboxd start &
-~/bin/capsesc
+capsesc
 numlockx

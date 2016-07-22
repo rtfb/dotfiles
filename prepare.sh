@@ -244,7 +244,6 @@ symlink $here/profile ~/.profile
 # i3
 #================
 mkdir -p ~/.i3
-cp $here/capsesc ~/bin/
 symlink $here/i3-config ~/.i3/config
 symlink $here/autostart ~/.i3/autostart
 symlink $here/i3status.conf ~/.i3status.conf
