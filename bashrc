@@ -150,7 +150,7 @@ GIT_PS1_SHOWUNTRACKEDFILES="1"
 GIT_PS1_SHOWSTASHSTATE="1"
 #  echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
 if [[ $platform == 'linux' ]]; then
-    export PS1=$Blue$Time24h$Color_Off'$(git branch &>/dev/null;\
+    export PS1=$BYellow$PathShort$Color_Off' -$(git branch &>/dev/null;\
     if [ $? -eq 0 ]; then \
       echo "$( \
       if [ "$(__git_ps1 %s)" = "`git branch | grep "*" | sed s/"^* "//`" ]; then \
@@ -159,10 +159,10 @@ if [[ $platform == 'linux' ]]; then
       else \
         # @5 - Changes to working tree
         echo "'$IRed'"$(__git_ps1 " (%s)"); \
-      fi) '$BYellow$PathShort$Color_Off'\$ "; \
+      fi)\n'$Blue$Time24h$Color_Off' \$ "; \
     else \
       # @2 - Prompt when not in GIT repo
-      echo " '$Yellow$PathShort$Color_Off'\$ "; \
+      echo "\n'$Blue$Time24h$Color_Off' \$ "; \
     fi)'
 else
     export PS1=$Blue$Time24h$Color_Off" $Yellow$PathShort$Color_Off\$ "
