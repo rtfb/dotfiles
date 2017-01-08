@@ -121,6 +121,9 @@ case $(hostname) in
         ;;
 esac
 
+# Shell integration for jump: https://github.com/gsamokovarov/jump
+eval "$(jump shell bash)"
+
 if [[ $platform == 'linux' ]]; then
     if [ -f /etc/bash_completion.d/git ]; then
         source /etc/bash_completion.d/git

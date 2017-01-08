@@ -258,3 +258,5 @@ symlink $here/gdbinit ~/.gdbinit
 # misc
 #================
 symlink $here/ekto.py ~/bin/ekto.py
+# install jump:
+go get github.com/gsamokovarov/jump
