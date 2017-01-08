@@ -204,7 +204,7 @@ set smartindent
 if has("mac")
     set gfn=Source\ Code\ Pro:h14
 else
-    set gfn=SourceCodePro\ 10
+    set gfn=SourceCodePro\ 9
 endif
 
 let g:load_doxygen_syntax=1
