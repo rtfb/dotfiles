@@ -16,6 +16,7 @@ Plugin 'tmhedberg/matchit'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
+Plugin 'AndrewRadev/splitjoin.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
