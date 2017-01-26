@@ -104,6 +104,9 @@ if has("autocmd")
   " Don't expand tabs in .go files
   autocmd FileType go setlocal noexpandtab
 
+  " Indent JavaScript by 2 columns at work
+  autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
   " (happens when dropping a file on gvim).
