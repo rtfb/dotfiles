@@ -247,7 +247,7 @@ mkdir -p ~/.i3
 symlink $here/i3-config ~/.i3/config
 symlink $here/autostart ~/.i3/autostart
 symlink $here/i3status.conf ~/.i3status.conf
-cp $here/lang.sh ~/bin/
+cp $here/bin/lang.sh ~/bin/
 
 #================
 # gdb
@@ -257,4 +257,4 @@ symlink $here/gdbinit ~/.gdbinit
 #================
 # misc
 #================
-symlink $here/ekto.py ~/bin/ekto.py
+symlink $here/bin/ekto.py ~/bin/ekto.py
