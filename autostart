@@ -2,5 +2,5 @@
 
 parcellite &
 ~/.dropbox-dist/dropboxd start &
-capsesc
+setxkbmap -option caps:escape
 numlockx
