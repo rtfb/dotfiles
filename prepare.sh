@@ -232,13 +232,13 @@ symlink $here/hgrc ~/.hgrc
 # bash
 #================
 if [[ $platform == 'linux' ]]; then
-    symlink $here/bashrc ~/.bashrc
+    symlink $here/bash/rc ~/.bashrc
 elif [[ $platform == 'osx' ]]; then
-    symlink $here/bashrc ~/.bash_profile
+    symlink $here/bash/rc ~/.bash_profile
 fi
 
-symlink $here/bash_aliases ~/.bash_aliases
-symlink $here/profile ~/.profile
+symlink $here/bash/aliases ~/.bash_aliases
+symlink $here/bash/profile ~/.profile
 
 #================
 # i3
