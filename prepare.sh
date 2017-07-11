@@ -282,7 +282,18 @@ symlink $here/bash/profile ~/.profile
 mkdir -p ~/.i3
 symlink $here/i3-config ~/.i3/config
 symlink $here/autostart ~/.i3/autostart
-symlink $here/i3status.conf ~/.i3status.conf
+case $hostname in
+    "vytas-ThinkPad-T450s")
+        symlink $here/i3/status-work.conf ~/.i3status.conf
+        ;;
+    "dungeon")
+        symlink $here/i3/status-home.conf ~/.i3status.conf
+        ;;
+    *)
+        echo "Non-whitelisted hostname. Defaulting to i3/status-home.conf"
+        symlink $here/i3/status-home.conf ~/.i3status.conf
+        ;;
+esac
 cp $here/bin/lang.sh ~/bin/
 
 #================
