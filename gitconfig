@@ -39,3 +39,5 @@
     tagcommit = !sh -c 'git rev-list $0 | head -n 1'
 [push]
 	default = simple
+[core]
+	quotepath = false
