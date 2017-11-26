@@ -295,6 +295,7 @@ case $hostname in
         ;;
 esac
 cp $here/bin/lang.sh ~/bin/
+cp $here/bin/lock-dpms.sh ~/bin/
 
 #================
 # gdb
