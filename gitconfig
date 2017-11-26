@@ -37,6 +37,9 @@
 
     # Figure out SHA1 by tag name
     tagcommit = !sh -c 'git rev-list $0 | head -n 1'
+
+    # diff between master and current branch
+    bdiff = !sh -c 'git diff master..`git rev-parse --abbrev-ref HEAD`'
 [push]
 	default = simple
 [core]
