@@ -1,9 +1,10 @@
 #!/bin/bash
 
 function usage {
-    echo "Usage: $0 [-f] [-d]"
+    echo "Usage: $0 [-f] [-d] [-u]"
     echo -e "\t-d will copy the default VCS settings (like .gitconfig.local)"
     echo -e "\t-f will enable full install, including downloads"
+    echo -e "\t-u will force setup even on non-whitelisted hostname"
     echo -e "\t-h displays this help"
     exit
 }
@@ -14,19 +15,72 @@ function backup {
     fi
 }
 
+# A POSIX variable
+OPTIND=1         # Reset in case getopts has been used previously in the shell.
+
+# Initialize our own variables:
+default_vcs_settings=0
+full_install=0
+force_unknown_hosts=0
+
+while getopts "h?dfu" opt; do
+    case "$opt" in
+        h|\?)
+            usage
+            exit 0
+            ;;
+        d)  default_vcs_settings=1
+            ;;
+        f)  full_install=1
+            ;;
+        u)  force_unknown_hosts=1
+            ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+[ "$1" = "--" ] && shift
+
+# echo "default_vcs_settings=$default_vcs_settings, full_install=$full_install, force_unknown_hosts=$force_unknown_hosts, Leftovers: $@"
+# exit
+
 platform="unknown"
 unamestr=$(uname)
+hostname=$(hostname)
+here="."
 
 case "$unamestr" in
     "Linux")
         platform="linux"
+        script=`readlink -f $0`
+        here=`dirname $script`
         ;;
     "Darwin")
         platform="osx"
+        here=$(dirname $(realpath "$0"))
         ;;
     *)
         echo "Unknown platform uname '$unamestr', exiting..."
         exit
+        ;;
+esac
+
+case $hostname in
+    "vytas-ThinkPad-T450s")
+        echo "This is work laptop, proceeding..."
+        ;;
+    "dungeon")
+        echo "This is home laptop, proceeding..."
+        ;;
+    *)
+        echo "Unknown hostname, some things might not work."
+        if [ $force_unknown_hosts -eq 1 ]; then
+            echo "Use '-u' to force proceed."
+            exit
+        else
+            echo "Proceeding due to '-u'."
+        fi
         ;;
 esac
 
@@ -43,41 +97,23 @@ realpath() {
   echo "$REALPATH"
 }
 
-if [[ $platform == 'linux' ]]; then
-    script=`readlink -f $0`
-    here=`dirname $script`
-elif [[ $platform == 'osx' ]]; then
-    here=$(dirname $(realpath "$0"))
-fi
-
 default_email='vytas@rtfb.lt'
 
 user_name=`whoami`
 user_record=`getent passwd $user_name`
 user_gecos_field=`echo "$user_record" | cut -d ':' -f 5`
 user_full_name=`echo "$user_gecos_field" | cut -d ',' -f 1`
-full_install=0
 
-if [[ $# -gt 0 ]]; then
-    if [[ $1 == "-h" ]]; then
-        usage
-        exit
-    fi
-    if [[ $1 == "-f" ]]; then
-        full_install=1
-        shift
-    fi
-    if [[ $1 == "-d" ]]; then
-        backup ~/.hgrc.local
-        backup ~/.gitconfig.local
-        echo -e "[user]\n" \
-                "\tname = $user_full_name\n" \
-                "\temail = $default_email\n" \
-            > ~/.gitconfig.local
-        echo -e "[ui]\nusername = $user_full_name <$default_email>\n" \
-            > ~/.hgrc.local
-        shift
-    fi
+if [ $default_vcs_settings -eq 1 ]; then
+    backup ~/.hgrc.local
+    backup ~/.gitconfig.local
+    echo -e "[user]\n" \
+            "\tname = $user_full_name\n" \
+            "\temail = $default_email\n" \
+        > ~/.gitconfig.local
+    echo -e "[ui]\nusername = $user_full_name <$default_email>\n" \
+        > ~/.hgrc.local
+    shift
 fi
 
 #================
@@ -246,7 +282,18 @@ symlink $here/bash/profile ~/.profile
 mkdir -p ~/.i3
 symlink $here/i3-config ~/.i3/config
 symlink $here/autostart ~/.i3/autostart
-symlink $here/i3status.conf ~/.i3status.conf
+case $hostname in
+    "vytas-ThinkPad-T450s")
+        symlink $here/i3/status-work.conf ~/.i3status.conf
+        ;;
+    "dungeon")
+        symlink $here/i3/status-home.conf ~/.i3status.conf
+        ;;
+    *)
+        echo "Non-whitelisted hostname. Defaulting to i3/status-home.conf"
+        symlink $here/i3/status-home.conf ~/.i3status.conf
+        ;;
+esac
 cp $here/bin/lang.sh ~/bin/
 
 #================
