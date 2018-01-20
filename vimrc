@@ -300,6 +300,8 @@ set viminfo^=%
 
 nnoremap <Insert> "*p<CR>
 inoremap <Insert> <Esc>"*pa
+nnoremap <C-\> :vsplit<CR>
+nnoremap <C-Return> :split<CR>
 
 """"""""""""""""""""""""""""""
 " => Status line
