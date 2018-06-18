@@ -27,10 +27,12 @@
     co = checkout
     df = diff
     dc = diff --cached
-    lg = log -p
+    lg = log -p --stat
     l = log --graph --decorate --pretty=oneline --abbrev-commit
+    ll = log --graph --decorate --pretty=format:'%C(yellow)%h%Creset %C(bold blue)%<(18,trunc)%ae%Creset %C(yellow)%d%Creset %s %Cgreen(%cr)' --abbrev-commit
     la = log --graph --decorate --pretty=oneline --abbrev-commit --all
     ls = ls-files
+    eyeball = show -p --stat
 
     # Show files ignored by git:
     ign = ls-files -o -i --exclude-standard
