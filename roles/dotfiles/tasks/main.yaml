@@ -1,0 +1,107 @@
+---
+- name: Find out playbooks path
+  shell: pwd
+  register: workdir
+- debug: var=workdir.stdout
+- debug: var=ansible_os_family
+- name: Gather OS family variables
+  include_vars: "{{ ansible_os_family|lower }}.yaml"
+- debug: var=font_dir
+- name: Install various software packages
+  include_tasks: "packages-{{ ansible_os_family|lower }}.yaml"
+- name: Create ~/bin
+  file:
+    dest: "$HOME/bin"
+    state: directory
+- name: Symlink .gitconfig
+  file:
+    src: "{{ workdir.stdout }}/gitconfig"
+    dest: $HOME/.gitconfig
+    state: link
+    follow: false
+- name: Symlink .hgrc
+  file:
+    src: "{{ workdir.stdout }}/hgrc"
+    dest: $HOME/.hgrc
+    state: link
+    follow: false
+- name: Symlink .profile
+  file:
+    src: "{{ workdir.stdout }}/bash/profile"
+    dest: $HOME/.profile
+    state: link
+    follow: false
+- name: Symlink .bash_aliases
+  file:
+    src: "{{ workdir.stdout }}/bash/aliases"
+    dest: $HOME/.bash_aliases
+    state: link
+    follow: false
+- name: Symlink .bashrc
+  file:
+    src: "{{ workdir.stdout }}/bash/rc"
+    dest: $HOME/.bashrc
+    state: link
+    follow: false
+- name: Symlink .bash_profile
+  file:
+    src: "{{ workdir.stdout }}/bash/bash_profile"
+    dest: $HOME/.bash_profile
+    state: link
+    follow: false
+- name: Symlink .vimrc
+  file:
+    src: "{{ workdir.stdout }}/vimrc"
+    dest: $HOME/.vimrc
+    state: link
+    follow: false
+- name: Create .vim directories
+  file:
+    dest: "$HOME/.vim/{{item}}"
+    state: directory
+  loop:
+    - ftplugin
+    - syntax
+    - spell
+- name: Download lt.utf-8.spl
+  get_url:
+    url: http://ftp.vim.org/vim/runtime/spell/lt.utf-8.spl
+    dest: $HOME/.vim/spell/lt.utf-8.spl
+- name: Clone Vundle
+  git:
+    repo: 'https://github.com/gmarik/Vundle.vim.git'
+    dest: $HOME/.vim/bundle/Vundle.vim
+- name: Install Vundle
+  shell: vim +PluginInstall +qall
+- name: Symlink ftplugin for .po files
+  file:
+    src: "{{ workdir.stdout }}/vim/ftplugin/po.vim"
+    dest: $HOME/.vim/ftplugin/po.vim
+    state: link
+    follow: false
+- name: Symlink ftplugin for hg commits
+  file:
+    src: "{{ workdir.stdout }}/vim/ftplugin/hgcommit.vim"
+    dest: $HOME/.vim/ftplugin/hgcommit.vim
+    state: link
+    follow: false
+- name: Symlink syntax file for hg commits
+  file:
+    src: "{{ workdir.stdout }}/vim/syntax/hgcommit.vim"
+    dest: $HOME/.vim/syntax/hgcommit.vim
+    state: link
+    follow: false
+
+# Install SourceCodePro font:
+# - name: Download SourceCodePro ttf
+#   get_url:
+#     url: https://cloud.github.com/downloads/adobe-fonts/source-code-pro/SourceCodePro_FontsOnly-1.010.zip
+#     dest: /tmp/SourceCodePro.zip
+
+# Install SourceCodePro font
+- name: Install fonts
+  include_tasks: "fonts-{{ ansible_os_family|lower }}.yaml"
+
+# Run OS-specific configuration
+- name: OS-specific configuration
+  include_tasks: "config-{{ ansible_os_family|lower }}.yaml"

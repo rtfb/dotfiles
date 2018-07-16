@@ -1,0 +1,13 @@
+- name: Create temp fonts directory
+  file:
+    dest: /tmp/SourceCodePro
+    state: directory
+- name: Download and extract SourceCodePro ttf
+  unarchive:
+    src: https://cloud.github.com/downloads/adobe-fonts/source-code-pro/SourceCodePro_FontsOnly-1.010.zip
+    dest: /tmp/SourceCodePro
+    remote_src: yes
+- name: Create fonts directory
+  file:
+    dest: "{{ font_dir }}"
+    state: directory

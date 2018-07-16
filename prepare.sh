@@ -15,6 +15,16 @@ function backup {
     fi
 }
 
+function check_prerequisites_darwin {
+    hash brew 2>/dev/null || {
+        echo >&2 "I require brew but it's not installed. Aborting."; exit 1;
+    }
+    hash ansible 2>/dev/null || {
+        echo "I require ansible, but it's not installed. Attempting to brew..."
+        brew install ansible
+    }
+}
+
 # A POSIX variable
 OPTIND=1         # Reset in case getopts has been used previously in the shell.
 
@@ -46,25 +56,27 @@ shift $((OPTIND-1))
 # exit
 
 platform="unknown"
-unamestr=$(uname)
 hostname=$(hostname)
 here="."
 
-case "$unamestr" in
-    "Linux")
+case $OSTYPE in
+    linux)
         platform="linux"
         script=`readlink -f $0`
         here=`dirname $script`
         ;;
-    "Darwin")
+    darwin*)
         platform="osx"
-        here=$(dirname $(realpath "$0"))
+	here=$(dirname $0)
+	check_prerequisites_darwin
         ;;
     *)
-        echo "Unknown platform uname '$unamestr', exiting..."
+        echo "Unknown OS '$OSTYPE', exiting..."
         exit
         ;;
 esac
+ansible-playbook -i 127.0.0.1, dotfiles.yaml
+exit
 
 case $hostname in
     "vytas-ThinkPad-T450s")
@@ -119,20 +131,20 @@ fi
 #================
 # SourceCodePro font
 #================
-function get_priv_fonts_dir {
-    case $platform in
-        'linux')
-            echo $HOME/.fonts
-            ;;
-        'osx')
-            echo $HOME/Library/Fonts
-            ;;
-        *)
-            echo 'Font installation not implemented on platform $(platform)!'
-            exit
-            ;;
-    esac
-}
+# function get_priv_fonts_dir {
+#     case $platform in
+#         'linux')
+#             echo $HOME/.fonts
+#             ;;
+#         'osx')
+#             echo $HOME/Library/Fonts
+#             ;;
+#         *)
+#             echo 'Font installation not implemented on platform $(platform)!'
+#             exit
+#             ;;
+#     esac
+# }
 
 function install_font {
     private_fonts=$(get_priv_fonts_dir)
@@ -208,18 +220,18 @@ if [ $full_install -eq 1 ]; then
     install_font
 fi
 
-if ! [ -d $HOME/bin ]; then
-    mkdir $HOME/bin
-fi
+# if ! [ -d $HOME/bin ]; then
+#     mkdir $HOME/bin
+# fi
 
 #================
 # Vim
 #================
-symlink $here/vimrc ~/.vimrc
+# symlink $here/vimrc ~/.vimrc
 mkdir -p ~/.vim/ftdetect
-mkdir -p ~/.vim/ftplugin
-mkdir -p ~/.vim/syntax
-mkdir -p ~/.vim/spell
+# mkdir -p ~/.vim/ftplugin
+# mkdir -p ~/.vim/syntax
+# mkdir -p ~/.vim/spell
 
 # I should be doing this:
 #curl -o ~/.vim/spell/lt.utf-8.spl http://ftp.vim.org/vim/runtime/spell/lt.utf-8.spl
@@ -232,49 +244,27 @@ mkdir -p ~/.vim/spell
 # I leave the hack around just in case I'll need it on some older version.
 # Would be best to figure out how can this be detected and do the right thing
 # in the right circumstances
-if [[ $full_install -eq 1 ]]; then
-    curl -o ~/.vim/spell/lt.utf-8.spl http://ftp.vim.org/vim/runtime/spell/lt.utf-8.spl
-fi
-
-if [[ $full_install -eq 1 ]]; then
-    if ! [[ -f ~/.vim/bundle/Vundle.vim ]]; then
-        git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    fi
-    vim +PluginInstall +qall
-fi
+# if [[ $full_install -eq 1 ]]; then
+#     curl -o ~/.vim/spell/lt.utf-8.spl http://ftp.vim.org/vim/runtime/spell/lt.utf-8.spl
+# fi
+# 
+# if [[ $full_install -eq 1 ]]; then
+#     if ! [[ -f ~/.vim/bundle/Vundle.vim ]]; then
+#         git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+#     fi
+#     vim +PluginInstall +qall
+# fi
 
 #if [ $full_install -eq 1 ]; then
 #    install_vim_plugins
 #fi
 
 # ftplugin for .po files
-symlink $here/vim/ftplugin/po.vim ~/.vim/ftplugin/po.vim
+# symlink $here/vim/ftplugin/po.vim ~/.vim/ftplugin/po.vim
 
 # ftplugin and syntax for hg commits
-symlink $here/vim/ftplugin/hgcommit.vim ~/.vim/ftplugin/hgcommit.vim
-symlink $here/vim/syntax/hgcommit.vim ~/.vim/syntax/hgcommit.vim
-
-#================
-# Git
-#================
-symlink $here/gitconfig ~/.gitconfig
-
-#================
-# Hg
-#================
-symlink $here/hgrc ~/.hgrc
-
-#================
-# bash
-#================
-if [[ $platform == 'linux' ]]; then
-    symlink $here/bash/rc ~/.bashrc
-elif [[ $platform == 'osx' ]]; then
-    symlink $here/bash/rc ~/.bash_profile
-fi
-
-symlink $here/bash/aliases ~/.bash_aliases
-symlink $here/bash/profile ~/.profile
+# symlink $here/vim/ftplugin/hgcommit.vim ~/.vim/ftplugin/hgcommit.vim
+# symlink $here/vim/syntax/hgcommit.vim ~/.vim/syntax/hgcommit.vim
 
 #================
 # i3

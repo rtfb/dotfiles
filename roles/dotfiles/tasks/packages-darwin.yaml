@@ -1,0 +1,11 @@
+- name: Install software packages via homebrew
+  homebrew:
+    name: "{{item}}"
+    state: present
+  loop:
+    - jump
+    - tree
+    - wget
+
+# TODO:
+# - install dropbox

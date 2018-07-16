@@ -1,0 +1,4 @@
+- name: Install SourceCodePro fonts
+  homebrew_cask:
+    name: font-source-code-pro
+    state: present

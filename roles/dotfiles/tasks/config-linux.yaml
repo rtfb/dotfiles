@@ -1,0 +1,6 @@
+- name: Create i3 configs dir
+  file:
+    dest: "$HOME/.i3"
+    state: directory
+
+# TODO: etc
