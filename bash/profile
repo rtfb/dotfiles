@@ -23,6 +23,13 @@ export PATH
 export EDITOR=vim
 export NDKROOT=$HOME/sw/android-ndk-r9b
 
+# Perl complains about these missing on my dev box and apparently just setting
+# them is the easiest remediation
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_TYPE=en_US.UTF-8
+
 if [ "$0" = "/usr/sbin/lightdm-session" -a "$DESKTOP_SESSION" = "i3" ]; then
     export $(gnome-keyring-daemon --start --components=ssh)
 fi
