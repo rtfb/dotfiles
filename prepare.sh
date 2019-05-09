@@ -137,7 +137,7 @@ function get_priv_fonts_dir {
 function install_font {
     private_fonts=$(get_priv_fonts_dir)
     if ! [[ -f $private_fonts/SourceCodePro-Regular.ttf ]] ; then
-        curl -o /tmp/SourceCodePro.zip https://cloud.github.com/downloads/adobe-fonts/source-code-pro/SourceCodePro_FontsOnly-1.010.zip
+        curl -L -o /tmp/SourceCodePro.zip https://github.com/adobe-fonts/source-code-pro/archive/2.030R-ro/1.050R-it.zip
         unzip -o -x /tmp/SourceCodePro.zip -d /tmp/SourceCodePro
         mkdir -p $private_fonts
         chmod +w /tmp/SourceCodePro/*/TTF/*.ttf
