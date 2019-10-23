@@ -17,6 +17,9 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
 Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'yssl/QFEnter'
+Plugin 'solarnz/arcanist.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -31,9 +34,23 @@ let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+" let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_enabled = ['golint']
+let g:go_metalinter_autosave_enabled = ['golint']
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_deadline = "5s"
+" I'm using an old Vim version (7.4 (2013 Aug 10, compiled Nov 24 2016
+" 16:44:48)), so let's try shutting up vim-go from complaining:
+let g:go_version_warning = 0
+
+let g:ctrlp_user_command = '/usr/bin/ag %s -l --nocolor --hidden -g ""'
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -130,6 +147,9 @@ if has("autocmd")
   " No color column and spell checking in man pages
   autocmd FileType man set colorcolumn=0
   autocmd FileType man set nospell
+
+  " Allow the entire dictionary to be candidates for autocompletion
+  autocmd FileType arcanistdiff execute 'setlocal complete+=k'
 
 endif " has("autocmd")
 
