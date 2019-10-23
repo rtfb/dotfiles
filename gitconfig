@@ -33,6 +33,11 @@
     la = log --graph --decorate --pretty=oneline --abbrev-commit --all
     ls = ls-files
     eyeball = show -p --stat
+    wip = ci -a -mWIP
+    rollup = ci -a --amend --no-edit
+
+    # new branch:
+    nb = checkout -b
 
     # Show files ignored by git:
     ign = ls-files -o -i --exclude-standard
@@ -42,7 +47,12 @@
 
     # diff between master and current branch
     bdiff = !sh -c 'git diff master..`git rev-parse --abbrev-ref HEAD`'
+
+[diff]
+	noprefix = true
+
 [push]
 	default = simple
+
 [core]
 	quotepath = false
