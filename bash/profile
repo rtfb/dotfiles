@@ -19,6 +19,9 @@ PATH=$GOROOT/bin:${PATH}
 PATH=$HOME/bin:${PATH}
 PATH=$HOME/.local/bin:${PATH}
 
+PLAN9=$HOME/src/plan9port export PLAN9
+PATH=$PATH:$PLAN9/bin
+
 export PATH
 export EDITOR=vim
 export NDKROOT=$HOME/sw/android-ndk-r9b
@@ -35,3 +38,5 @@ if [ "$0" = "/usr/sbin/lightdm-session" -a "$DESKTOP_SESSION" = "i3" ]; then
 fi
 
 eval "$(ssh-agent -s)"
+
+export PATH="$HOME/.cargo/bin:$PATH"
