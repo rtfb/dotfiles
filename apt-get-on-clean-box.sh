@@ -5,7 +5,8 @@ apt-get update
 # regular software, esp. one that I have bindings for:
 apt-get --yes install \
     curl wget scrot tree abcde flac xclip parcellite numlockx fontconfig \
-    silversearcher-ag units
+    silversearcher-ag units \
+    libgnome2-bin # gnome-open
 
 # GUI things:
 apt-get --yes install vim-gtk gimp

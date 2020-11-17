@@ -29,6 +29,7 @@ alias capsesc='setxkbmap -option caps:escape'
 alias capslock='xmodmap -e "keycode 0x42 = Caps_Lock"'
 alias ncal='ncal -M'
 alias poweroff='echo "no no, you do not want that"'
+alias o=gnome-open
 
 # a shortcut to grepping over history
 function hgrep() { history | grep "$@"; }
