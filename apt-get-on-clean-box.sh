@@ -18,6 +18,7 @@ PKGS=(
     units
     libgnome2-bin # gnome-open
     unzip # needed for prepare.sh
+    make
 
     # GUI things:
     vim-gtk3
