@@ -4,25 +4,25 @@ apt-get update
 
 # regular software, esp. one that I have bindings for:
 PKGS=(
-    curl
-    wget
-    scrot
-    tree
     abcde
+    curl
     flac
-    xclip
-    parcellite
-    numlockx
     fontconfig
-    silversearcher-ag
-    units
     libgnome2-bin # gnome-open
-    unzip # needed for prepare.sh
     make
+    numlockx
+    parcellite
+    scrot
+    silversearcher-ag
+    tree
+    units
+    unzip # needed for prepare.sh
+    wget
+    xclip
 
     # GUI things:
-    vim-gtk3
     gimp
+    vim-gtk3
 )
 
 apt-get --yes install ${PKGS[@]}
