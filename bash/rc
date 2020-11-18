@@ -231,3 +231,7 @@ function cbhs() {
 }
 
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
+if [ -f ~/.bashrc-uber ]; then
+    . ~/.bashrc-uber
+fi
