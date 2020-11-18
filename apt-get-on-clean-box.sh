@@ -20,7 +20,7 @@ PKGS=(
     unzip # needed for prepare.sh
 
     # GUI things:
-    vim-gtk
+    vim-gtk3
     gimp
 )
 
