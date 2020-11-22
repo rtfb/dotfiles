@@ -33,8 +33,8 @@
     la = log --graph --decorate --pretty=oneline --abbrev-commit --all
     ls = ls-files
     eyeball = show -p --stat
-    wip = ci -a -mWIP
-    rollup = ci -a --amend --no-edit
+    wip = commit -a -mWIP
+    rollup = commit -a --amend --no-edit
 
     # new branch:
     nb = checkout -b
