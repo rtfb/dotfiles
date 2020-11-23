@@ -26,8 +26,15 @@ PKGS=(
 
 apt-get --yes install ${PKGS[@]}
 
-# install jump:
-wget -O /tmp/jump_0.30.1_amd64.deb https://github.com/gsamokovarov/jump/releases/download/v0.30.1/jump_0.30.1_amd64.deb
-dpkg -i /tmp/jump_0.30.1_amd64.deb
-cd ~
-su rtfb -c "wget -O - \"https://www.dropbox.com/download?plat=lnx.x86_64\" | tar xzf -"
+if ! command -v jump &> /dev/null
+then
+    echo "jump not found, installing..."
+    wget -O /tmp/jump_0.30.1_amd64.deb https://github.com/gsamokovarov/jump/releases/download/v0.30.1/jump_0.30.1_amd64.deb
+    dpkg -i /tmp/jump_0.30.1_amd64.deb
+fi
+
+if ! [ -d ~/.dropbox-dist ]; then
+    echo "dropbox not found, installing..."
+    cd ~
+    su rtfb -c "wget -O - \"https://www.dropbox.com/download?plat=lnx.x86_64\" | tar xzf -"
+fi
