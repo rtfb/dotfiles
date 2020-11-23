@@ -8,7 +8,6 @@ PKGS=(
     curl
     flac
     fontconfig
-    libgnome2-bin # gnome-open
     make
     numlockx
     parcellite
