@@ -66,23 +66,17 @@ case "$unamestr" in
         ;;
 esac
 
-case $hostname in
-    "vytas-ThinkPad-T450s")
-        echo "This is work laptop, proceeding..."
-        ;;
-    "dungeon")
-        echo "This is home laptop, proceeding..."
-        ;;
-    *)
-        echo "Unknown hostname, some things might not work."
-        if [ $force_unknown_hosts -eq 1 ]; then
-            echo "Use '-u' to force proceed."
-            exit
-        else
-            echo "Proceeding due to '-u'."
-        fi
-        ;;
-esac
+if [ -f $here/i3/$hostname-status.conf ]; then
+    echo "This is a whitelisted host, proceeding..."
+else
+    echo "Unknown hostname, some things might not work."
+    if [ $force_unknown_hosts -eq 1 ]; then
+        echo "Use '-u' to force proceed."
+        exit
+    else
+        echo "Proceeding due to '-u'."
+    fi
+fi
 
 realpath() {
   OURPWD=$PWD
@@ -282,18 +276,14 @@ symlink $here/bash/profile ~/.profile
 mkdir -p ~/.i3
 symlink $here/i3-config ~/.i3/config
 symlink $here/autostart ~/.i3/autostart
-case $hostname in
-    "vytas-ThinkPad-T450s")
-        symlink $here/i3/status-work.conf ~/.i3status.conf
-        ;;
-    "dungeon")
-        symlink $here/i3/status-home.conf ~/.i3status.conf
-        ;;
-    *)
-        echo "Non-whitelisted hostname. Defaulting to i3/status-home.conf"
-        symlink $here/i3/status-home.conf ~/.i3status.conf
-        ;;
-esac
+
+if [ -f $here/i3/$hostname-status.conf ]; then
+    symlink $here/i3/$hostname-status.conf ~/.i3status.conf
+else
+    echo "Non-whitelisted hostname. Defaulting to i3/status-home.conf"
+    symlink $here/i3/status-home.conf ~/.i3status.conf
+fi
+
 cp $here/bin/lang.sh ~/bin/
 cp $here/bin/lock-dpms.sh ~/bin/
 
