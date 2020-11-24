@@ -33,7 +33,7 @@ then
     dpkg -i /tmp/jump_0.30.1_amd64.deb
 fi
 
-if ! [ -d ~/.dropbox-dist ]; then
+if ! [ -d ~/.dropbox-dist ] && [ "$(hostname)" == "dungeon" ]; then
     echo "dropbox not found, installing..."
     cd ~
     su rtfb -c "wget -O - \"https://www.dropbox.com/download?plat=lnx.x86_64\" | tar xzf -"
