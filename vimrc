@@ -97,6 +97,7 @@ set magic
 set noerrorbells
 set novisualbell
 set t_vb=
+set belloff=all
 set tm=500
 
 " Show matching brackets when text indicator is over them
