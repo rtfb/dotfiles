@@ -35,6 +35,7 @@
     eyeball = show -p --stat
     wip = commit -a -mWIP
     rollup = commit -a --amend --no-edit
+    mylog = log --author=vytas
 
     # new branch:
     nb = checkout -b
