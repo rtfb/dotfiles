@@ -178,6 +178,11 @@ if !exists(":DiffOrig")
                           \ | wincmd p | diffthis
 endif
 
+augroup my_colours
+  autocmd!
+  autocmd ColorScheme elflord hi SpellBad ctermbg=000 cterm=none
+augroup END
+
 colorscheme elflord             " My favourite color scheme
 set background=dark
 set nowrap                      " No line wrapping
