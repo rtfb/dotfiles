@@ -8,6 +8,7 @@ PKGS=(
     curl
     flac
     fontconfig
+    jq
     make
     numlockx
     parcellite
