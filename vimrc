@@ -160,6 +160,13 @@ if has("autocmd")
   " Allow the entire dictionary to be candidates for autocompletion
   autocmd FileType arcanistdiff execute 'setlocal complete+=k'
 
+  augroup decentspellcheck
+    autocmd!
+    " 237 is an acceptable shade of gray:
+    autocmd ColorScheme elflord hi SpellBad ctermbg=237 cterm=none
+    autocmd ColorScheme elflord hi SpellCap ctermbg=none cterm=underline
+  augroup END
+
 endif " has("autocmd")
 
 """"""""""""""""""""""""""""""
@@ -177,11 +184,6 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
                           \ | wincmd p | diffthis
 endif
-
-augroup my_colours
-  autocmd!
-  autocmd ColorScheme elflord hi SpellBad ctermbg=000 cterm=none
-augroup END
 
 colorscheme elflord             " My favourite color scheme
 set background=dark
