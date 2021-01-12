@@ -20,6 +20,8 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'yssl/QFEnter'
 Plugin 'solarnz/arcanist.vim'
+Plugin 'kylelaker/riscv.vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -159,6 +161,9 @@ if has("autocmd")
 
   " Allow the entire dictionary to be candidates for autocompletion
   autocmd FileType arcanistdiff execute 'setlocal complete+=k'
+
+  " Expand tabs in assembly files
+  autocmd FileType asm setlocal shiftwidth=2 softtabstop=2 expandtab
 
   augroup decentspellcheck
     autocmd!
