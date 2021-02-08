@@ -5,6 +5,7 @@ apt-get update
 # regular software, esp. one that I have bindings for:
 PKGS=(
     abcde
+    ascii
     curl
     flac
     fontconfig
