@@ -283,9 +283,14 @@ nnoremap <C-L> :nohls<CR><C-L>
 
 set wildmenu
 set wildmode=list:full
-set title
 set nojoinspaces
 set ruler
+
+" Allow vim to change terminal title (set title), but clear titleold so that
+" it doesn't leave the title set to the default 'Thanks for flying Vim' after
+" exit
+set title
+set titleold=
 
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
