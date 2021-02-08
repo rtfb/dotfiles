@@ -162,8 +162,9 @@ if has("autocmd")
   " Allow the entire dictionary to be candidates for autocompletion
   autocmd FileType arcanistdiff execute 'setlocal complete+=k'
 
-  " Expand tabs in assembly files
+  " Expand tabs in assembly files, and no color column
   autocmd FileType asm setlocal shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType asm set colorcolumn=0
 
   augroup decentspellcheck
     autocmd!
