@@ -35,10 +35,15 @@
     eyeball = show -p --stat
     wip = commit -a -mWIP
     rollup = commit -a --amend --no-edit
-    mylog = log --author=vytas
+
+    # my commits
+    ml = log --author=vytas
+
+    # switch to branch by fuzzy search
+    fb = !sh -c 'git checkout $(git branch | fzf -1 -q $0)'
 
     # same as 'll' but with --author=me
-    myll = log --author=vytas --graph --decorate --pretty=format:'%C(yellow)%h%Creset %C(bold blue)%<(18,trunc)%ae%Creset %C(yellow)%d%Creset %s %Cgreen(%cr)' --abbrev-commit
+    mll = log --author=vytas --graph --decorate --pretty=format:'%C(yellow)%h%Creset %C(bold blue)%<(18,trunc)%ae%Creset %C(yellow)%d%Creset %s %Cgreen(%cr)' --abbrev-commit
 
     # new branch:
     nb = checkout -b
