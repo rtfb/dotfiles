@@ -413,6 +413,12 @@ map <leader>pp :setlocal paste!<cr>
 nnoremap <leader>- yyp<c-v>$r-
 nnoremap <leader>= yyp<c-v>$r=
 
+" Copy the path to the current buffer:
+" 1, to system clipboard:
+nnoremap <leader>ff :let @+=expand('%:p')<CR>
+" 2, yank it:
+nnoremap <leader>yf :let @"=expand('%:p')<CR>
+
 " A quick workaround to avoid error highlight for C++11 lambdas
 let c_no_curly_error=1
 
