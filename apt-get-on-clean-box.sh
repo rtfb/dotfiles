@@ -12,6 +12,7 @@ PKGS=(
     jq
     make
     numlockx
+    p7zip-full
     parcellite
     scrot
     silversearcher-ag
