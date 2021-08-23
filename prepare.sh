@@ -296,3 +296,12 @@ symlink $here/gdbinit ~/.gdbinit
 # misc
 #================
 symlink $here/bin/ekto.py ~/bin/ekto.py
+
+# Install Kitty terminal:
+# https://sw.kovidgoyal.net/kitty/binary.html
+
+# Add kitty.desktop to the gnome launcher:
+ln -s $here/kitty.desktop ~/.local/share/applications/kitty.desktop
+rm ~/.config/kitty/kitty.conf
+ln -s $here/kitty.conf ~/.config/kitty/kitty.conf
+gsettings set org.gnome.shell favorite-apps "$(python -c "print $(gsettings get org.gnome.shell favorite-apps) + ['kitty.desktop']")"

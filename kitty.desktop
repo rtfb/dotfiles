@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Kitty
+Exec=kitty
+Icon=/home/vytas/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png
+NoDisplay=true
+StartupWMClass=
