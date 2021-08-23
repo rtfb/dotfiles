@@ -33,3 +33,13 @@ alias o=xdg-open
 
 # a shortcut to grepping over history
 function hgrep() { history | grep "$@"; }
+
+# Open all files from a specified commit in vim.
+# https://danielhpavey.uk/vim/vim-open-all-files-from-specified-commit/
+function vimmit(){
+    if [ $# -eq 0 ]; then
+        vim $(git diff-tree --no-commit-id --name-only -r HEAD)
+    else
+        vim $(git diff-tree --no-commit-id --name-only -r $1)
+    fi
+}
