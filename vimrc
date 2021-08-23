@@ -202,6 +202,7 @@ imap <silent> <S-tab> <C-v><tab>
 set listchars=tab:>-,trail:.    " Make tabs and trailing spaces visible
 set list                        " This enables the line above
 highlight SpecialKey guifg=#222222 guibg=black
+highlight SpecialKey ctermfg=54 guibg=black
 
 highlight ExtraWhitespaceR ctermbg=red guibg=red
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
