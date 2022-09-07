@@ -30,6 +30,7 @@ alias capslock='xmodmap -e "keycode 0x42 = Caps_Lock"'
 alias ncal='ncal -M'
 alias poweroff='echo "no no, you do not want that"'
 alias o=xdg-open
+alias p=python3
 
 # a shortcut to grepping over history
 function hgrep() { history | grep "$@"; }
