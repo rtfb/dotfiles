@@ -70,7 +70,7 @@ if [ -f $here/i3/$hostname-status.conf ]; then
     echo "This is a whitelisted host, proceeding..."
 else
     echo "Unknown hostname, some things might not work."
-    if [ $force_unknown_hosts -eq 1 ]; then
+    if [ ! $force_unknown_hosts -eq 1 ]; then
         echo "Use '-u' to force proceed."
         exit
     else
