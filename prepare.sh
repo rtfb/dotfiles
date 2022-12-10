@@ -297,9 +297,6 @@ symlink $here/gdbinit ~/.gdbinit
 #================
 symlink $here/bin/ekto.py ~/bin/ekto.py
 
-# Install Kitty terminal:
-# https://sw.kovidgoyal.net/kitty/binary.html
-
 # Add kitty.desktop to the gnome launcher:
 ln -s $here/kitty.desktop ~/.local/share/applications/kitty.desktop
 rm ~/.config/kitty/kitty.conf
