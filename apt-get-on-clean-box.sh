@@ -11,6 +11,7 @@ PKGS=(
     fontconfig
     jq
     make
+    ncal
     numlockx
     p7zip-full
     parcellite
