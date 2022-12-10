@@ -18,6 +18,7 @@ PATH=$GOPATH/bin:${PATH}
 PATH=$GOROOT/bin:${PATH}
 PATH=$HOME/bin:${PATH}
 PATH=$HOME/.local/bin:${PATH}
+PATH=$HOME/.local/kitty.app/bin:${PATH}
 
 PLAN9=$HOME/src/plan9port export PLAN9
 PATH=$PATH:$PLAN9/bin
