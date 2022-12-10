@@ -15,6 +15,7 @@ PKGS=(
     numlockx
     p7zip-full
     parcellite
+    python3
     scrot
     silversearcher-ag
     tree
