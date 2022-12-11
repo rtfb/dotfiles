@@ -11,6 +11,7 @@ PKGS=(
     fontconfig
     jq
     make
+    libglib2.0-bin  # for gsettings in prepare.sh
     ncal
     numlockx
     p7zip-full

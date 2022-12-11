@@ -297,8 +297,14 @@ symlink $here/gdbinit ~/.gdbinit
 #================
 symlink $here/bin/ekto.py ~/bin/ekto.py
 
+mkdir -p ~/.local/share/applications/
+mkdir -p ~/.config/kitty/
+
 # Add kitty.desktop to the gnome launcher:
 symlink $here/kitty.desktop ~/.local/share/applications/kitty.desktop
 rm ~/.config/kitty/kitty.conf
 symlink $here/kitty.conf ~/.config/kitty/kitty.conf
-gsettings set org.gnome.shell favorite-apps "$(python3 -c "print($(gsettings get org.gnome.shell favorite-apps) + ['kitty.desktop'])")"
+
+if [[ "$XDG_CURRENT_DESKTOP" == *GNOME ]]; then
+    gsettings set org.gnome.shell favorite-apps "$(python3 -c "print($(gsettings get org.gnome.shell favorite-apps) + ['kitty.desktop'])")"
+fi
