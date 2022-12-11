@@ -4,9 +4,9 @@ apt-get update
 
 # regular software, esp. one that I have bindings for:
 PKGS=(
-    abcde
     ascii
     curl
+    docker.io
     flac
     fontconfig
     jq
@@ -30,6 +30,9 @@ PKGS=(
 )
 
 apt-get --yes install ${PKGS[@]}
+
+# Let my user use docker without sudo:
+usermod -aG docker $USER
 
 if ! command -v jump &> /dev/null
 then
