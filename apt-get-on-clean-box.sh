@@ -7,6 +7,7 @@ PKGS=(
     ascii
     curl
     docker.io
+    docker-compose
     flac
     fontconfig
     jq
@@ -17,6 +18,7 @@ PKGS=(
     p7zip-full
     parcellite
     python3
+    python-is-python3
     scrot
     silversearcher-ag
     tree

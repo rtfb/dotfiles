@@ -15,7 +15,7 @@ all-ci: build-test-image
 # builds the docker image
 .PHONY: build-test-image
 build-test-image:
-	docker build -t test-dotfiles-image .
+	docker build -t ${APPNAME} .
 
 # override entrypoint to gain interactive shell
 .PHONY: dshell
