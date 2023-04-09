@@ -38,6 +38,9 @@ apt-get --yes install ${PKGS[@]}
 # Let my user use docker without sudo:
 usermod -aG docker $USER
 
+# Let my user access serial without sudo:
+usermod -aG dialout $USER
+
 if ! command -v jump &> /dev/null
 then
     echo "jump not found, installing..."
