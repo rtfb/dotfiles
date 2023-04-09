@@ -20,6 +20,7 @@ Plugin 'yssl/QFEnter'
 Plugin 'solarnz/arcanist.vim'
 Plugin 'kylelaker/riscv.vim'
 Plugin 'tpope/vim-fireplace'
+Plugin 'ziglang/zig.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
