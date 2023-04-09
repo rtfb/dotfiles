@@ -12,6 +12,7 @@ PKGS=(
     fontconfig
     jq
     make
+    libfuse2 # needed to run AppImage binaries
     libglib2.0-bin  # for gsettings in prepare.sh
     ncal
     numlockx
