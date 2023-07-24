@@ -28,6 +28,10 @@ if [[ $platform == 'osx' ]]; then
     fi
 fi
 
+if [ -f ~/bin/git-completion.bash ]; then
+    source ~/bin/git-completion.bash
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth

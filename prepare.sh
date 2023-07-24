@@ -267,6 +267,16 @@ if [[ $platform == 'osx' ]]; then
     symlink $here/bash/bash_profile ~/.bash_profile
 fi
 
+if [[ $platform == 'osx' ]]; then
+    if ! [ -f ~/bin/git-completion.bash ]; then
+        curl  -o ~/bin/git-completion.bash \
+            https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+        chmod +x ~/bin/git-completion.bash
+    fi
+
+    symlink $here/bash/bash_profile ~/.bash_profile
+fi
+
 symlink $here/bash/aliases ~/.bash_aliases
 symlink $here/bash/profile ~/.profile
 
