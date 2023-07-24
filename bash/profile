@@ -7,8 +7,13 @@ if [ -d ~/hacking/go ]; then
     export GOROOT=~/hacking/go
 fi
 
-export GOPATH=~/sw/gopkgs
-export GOBIN=$HOME/go/bin
+if [ -d ~/sw ]; then
+    export GOPATH=~/sw/gopkgs
+else
+    export GOPATH=~/go
+fi
+
+export GOBIN=$GOPATH/bin
 
 CDPATH=$CDPATH:$GOPATH/src/github.com:$GOPATH/src/code.google.com/p:$GOPATH/src/bitbucket.org
 
