@@ -261,10 +261,10 @@ symlink $here/hgrc ~/.hgrc
 #================
 # bash
 #================
-if [[ $platform == 'linux' ]]; then
-    symlink $here/bash/rc ~/.bashrc
-elif [[ $platform == 'osx' ]]; then
-    symlink $here/bash/rc ~/.bash_profile
+symlink $here/bash/rc ~/.bashrc
+
+if [[ $platform == 'osx' ]]; then
+    symlink $here/bash/bash_profile ~/.bash_profile
 fi
 
 symlink $here/bash/aliases ~/.bash_aliases

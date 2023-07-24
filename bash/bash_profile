@@ -1,0 +1,5 @@
+# Terminal.app on OSX doesn't read .bashrc, and reads .bash_profile
+# instead. So source .bashrc to read the actual configs.
+if [ -r ~/.bashrc ]; then
+   source ~/.bashrc
+fi
