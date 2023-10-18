@@ -52,3 +52,7 @@ fi
 eval "$(ssh-agent -s)"
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+toolshed() {
+    docker run --name toolshed -v `pwd`:/x -w /x -ti --rm rtfb/toolshed "$@"
+}
