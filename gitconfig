@@ -21,7 +21,7 @@
     untracked = cyan
 
 [alias]
-    st = status -s
+    st = status --short --branch --ignore-submodules=untracked
     ci = commit
     br = branch
     co = checkout
