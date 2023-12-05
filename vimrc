@@ -46,9 +46,6 @@ let g:go_metalinter_enabled = ['golint']
 let g:go_metalinter_autosave_enabled = ['golint']
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_deadline = "5s"
-" I'm using an old Vim version (7.4 (2013 Aug 10, compiled Nov 24 2016
-" 16:44:48)), so let's try shutting up vim-go from complaining:
-let g:go_version_warning = 0
 
 call SourceIfExists("~/.vimrc-uber")
 
