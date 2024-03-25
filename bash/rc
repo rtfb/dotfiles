@@ -249,3 +249,4 @@ fi
 if [ -f ~/.bashrc-uber ]; then
     . ~/.bashrc-uber
 fi
+. "$HOME/.cargo/env"

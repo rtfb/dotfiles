@@ -35,4 +35,4 @@ fi
 
 eval "$(ssh-agent -s)"
 
-export PATH="$HOME/.cargo/bin:$PATH"
+. "$HOME/.cargo/env"
