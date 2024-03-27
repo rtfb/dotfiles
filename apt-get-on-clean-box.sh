@@ -35,6 +35,11 @@ PKGS=(
 
 apt-get --yes install ${PKGS[@]}
 
+SNAPS=(
+    bw     # Bitwarden cli
+)
+snap install ${SNAPS[@]}
+
 # Let my user use docker without sudo:
 usermod -aG docker $USER
 
