@@ -55,11 +55,6 @@ then
     dpkg -i /tmp/glow_1.4.1_linux_amd64.deb
 fi
 
-if [ ! -f ~/.local/kitty.app/bin/kitty ]; then
-    echo "kitty not found, installing..."
-    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-fi
-
 if ! [ -d ~/.dropbox-dist ] && [ "$(hostname)" == "dungeon" ]; then
     echo "dropbox not found, installing..."
     cd ~
