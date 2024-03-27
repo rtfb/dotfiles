@@ -9,7 +9,6 @@ PATH=$GOROOT/bin:${PATH}
 PATH=$GOBIN:${PATH}
 PATH=$HOME/bin:${PATH}
 PATH=$HOME/.local/bin:${PATH}
-PATH=$HOME/.local/kitty.app/bin:${PATH}
 PATH=${PATH}:~/zig
 
 if [ -d /opt/homebrew/bin ]; then
