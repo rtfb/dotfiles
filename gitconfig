@@ -57,6 +57,9 @@
     # diff between master and current branch
     bdiff = !sh -c 'git diff master..`git rev-parse --abbrev-ref HEAD`'
 
+    # get rid of local references to remote branches that no longer exist
+    prune = fetch --prune
+
 [diff]
 	noprefix = true
 
