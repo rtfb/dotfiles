@@ -35,6 +35,8 @@ fi
 alias poweroff='echo "no no, you do not want that"'
 alias o=xdg-open
 alias p=python3
+# probably does the same as ^L and 'tput clear':
+alias fixtty='stty sane'
 
 # a shortcut to grepping over history
 function hgrep() { history | grep "$@"; }
