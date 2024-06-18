@@ -21,6 +21,8 @@ case "$unamestr" in
         ;;
 esac
 
+eval "$(direnv hook bash)"
+
 if [[ $platform == 'osx' ]]; then
     # Improve autocompletion on OSX:
     if [ -f $(brew --prefix)/etc/bash_completion ]; then

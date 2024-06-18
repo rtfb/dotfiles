@@ -6,6 +6,7 @@ apt-get update
 PKGS=(
     ascii
     curl
+    direnv
     docker.io
     docker-compose
     flac
