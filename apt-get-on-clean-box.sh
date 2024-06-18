@@ -11,6 +11,7 @@ PKGS=(
     docker-compose
     flac
     fontconfig
+    gnome-tweaks
     jq
     make
     libfuse2 # needed to run AppImage binaries
