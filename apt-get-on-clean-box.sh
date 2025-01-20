@@ -24,6 +24,7 @@ PKGS=(
     python-is-python3
     scrot
     silversearcher-ag
+    tmux
     tree
     units
     unzip # needed for prepare.sh
