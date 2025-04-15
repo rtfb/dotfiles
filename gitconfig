@@ -23,7 +23,7 @@
 [alias]
     st = status --short --branch --ignore-submodules=untracked
     ci = commit
-    br = branch
+    b = branch
     co = checkout
     df = diff
     dc = diff --cached
@@ -35,6 +35,9 @@
     eyeball = show -p --stat
     wip = commit -a -mWIP
     rollup = commit -a --amend --no-edit
+
+    # check out main or master, whichever is present:
+    m = !git checkout \"$(git branch --format '%(refname:short)' --list master main)\"
 
     # my commits
     ml = log --author=vytas
