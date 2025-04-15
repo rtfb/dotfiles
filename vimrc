@@ -21,6 +21,7 @@ Plugin 'solarnz/arcanist.vim'
 Plugin 'kylelaker/riscv.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'ziglang/zig.vim'
+Plugin 'Donaldttt/fuzzyy'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -48,8 +49,6 @@ let g:go_metalinter_autosave = 1
 let g:go_metalinter_deadline = "5s"
 
 call SourceIfExists("~/.vimrc-uber")
-
-let g:ctrlp_user_command = '/usr/bin/ag %s -l --nocolor --hidden -g ""'
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -328,9 +327,6 @@ set foldmarker=BEGIN\ EX,END\ EX
 
 nmap <silent> gr :tabprev<cr>
 
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-nnoremap <silent> <Leader>f :CtrlP<cr>
-
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
@@ -412,7 +408,7 @@ nnoremap <leader>= yyp<c-v>$r=
 
 " Copy the path to the current buffer:
 " 1, to system clipboard:
-nnoremap <leader>ff :let @+=expand('%:p')<CR>
+nnoremap <leader>cf :let @+=expand('%:p')<CR>
 " 2, yank it:
 nnoremap <leader>yf :let @"=expand('%:p')<CR>
 
