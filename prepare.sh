@@ -142,45 +142,6 @@ function install_font {
     fi
 }
 
-function install_vim_plugins {
-    # Unimpaired: http://www.vim.org/scripts/script.php?script_id=1590
-    curl -o /tmp/unimpaired.zip http://www.vim.org/scripts/download_script.php?src_id=12570
-    unzip -o -x /tmp/unimpaired.zip -d ~/.vim
-
-    # Bufexplorer: http://www.vim.org/scripts/script.php?script_id=42
-    curl -o /tmp/bufexplorer.zip http://www.vim.org/scripts/download_script.php?src_id=14208
-    unzip -o -x /tmp/bufexplorer.zip -d ~/.vim
-
-    # Matchit
-    curl -o /tmp/matchit.zip http://www.vim.org/scripts/download_script.php?src_id=8196
-    unzip -o -x /tmp/matchit.zip -d ~/.vim
-
-    # Supertab: http://www.vim.org/scripts/script.php?script_id=1643
-    curl -o /tmp/supertab.vmb http://www.vim.org/scripts/download_script.php?src_id=18075
-    vim -c 'so %' -c 'q' /tmp/supertab.vmb
-
-    # CtrlP: http://kien.github.com/ctrlp.vim/
-    ctrlp="$HOME/.vim/bundle/ctrlp.vim"
-
-    if [ -d $crlp ]; then
-        rm -rf $ctrlp
-    fi
-
-    git clone https://github.com/kien/ctrlp.vim.git $ctrlp
-    vim -c 'helptags ~/.vim/bundle/ctrlp.vim/doc' -c 'q'
-
-    # Go stuff: git://github.com/jnwhiteh/vim-golang.git
-    vim_golang=/tmp/vim-golang
-
-    if [ -d $vim_golang ]; then
-        rm -rf $vim_golang
-    fi
-
-    git clone git://github.com/rtfb/vim-golang.git $vim_golang
-    rm -rf $vim_golang/.git
-    cp -r $vim_golang/* $HOME/.vim
-}
-
 function symlink {
     # If it is a regular file, move it out of the way:
     if [ -f $2 ]; then
@@ -236,10 +197,6 @@ if [[ $full_install -eq 1 ]]; then
     fi
     vim +PluginInstall +qall
 fi
-
-#if [ $full_install -eq 1 ]; then
-#    install_vim_plugins
-#fi
 
 # ftplugin for .po files
 symlink $here/vim/ftplugin/po.vim ~/.vim/ftplugin/po.vim
