@@ -188,7 +188,7 @@ mkdir -p ~/.vim/spell
 # Would be best to figure out how can this be detected and do the right thing
 # in the right circumstances
 if [[ $full_install -eq 1 ]]; then
-    curl -o ~/.vim/spell/lt.utf-8.spl http://ftp.vim.org/vim/runtime/spell/lt.utf-8.spl
+    curl -o ~/.vim/spell/lt.utf-8.spl https://ftp.nluug.nl/pub/vim/runtime/spell/lt.utf-8.spl
 fi
 
 if [[ $full_install -eq 1 ]]; then
