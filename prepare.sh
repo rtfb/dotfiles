@@ -131,7 +131,7 @@ function get_priv_fonts_dir {
 function install_font {
     private_fonts=$(get_priv_fonts_dir)
     if ! [[ -f $private_fonts/SourceCodePro-Regular.ttf ]] ; then
-        curl -L -o /tmp/SourceCodePro.zip https://github.com/adobe-fonts/source-code-pro/archive/2.030R-ro/1.050R-it.zip
+        curl -sS -L -o /tmp/SourceCodePro.zip https://github.com/adobe-fonts/source-code-pro/archive/2.030R-ro/1.050R-it.zip
         unzip -o -x /tmp/SourceCodePro.zip -d /tmp/SourceCodePro
         mkdir -p $private_fonts
         chmod +w /tmp/SourceCodePro/*/TTF/*.ttf
@@ -188,7 +188,7 @@ mkdir -p ~/.vim/spell
 # Would be best to figure out how can this be detected and do the right thing
 # in the right circumstances
 if [[ $full_install -eq 1 ]]; then
-    curl -o ~/.vim/spell/lt.utf-8.spl https://ftp.nluug.nl/pub/vim/runtime/spell/lt.utf-8.spl
+    curl -sS -o ~/.vim/spell/lt.utf-8.spl https://ftp.nluug.nl/pub/vim/runtime/spell/lt.utf-8.spl
 fi
 
 if [[ $full_install -eq 1 ]]; then
@@ -226,7 +226,7 @@ fi
 
 if [[ $platform == 'osx' ]]; then
     if ! [ -f ~/bin/git-completion.bash ]; then
-        curl  -o ~/bin/git-completion.bash \
+        curl -sS -o ~/bin/git-completion.bash \
             https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
         chmod +x ~/bin/git-completion.bash
     fi
