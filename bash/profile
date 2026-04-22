@@ -33,5 +33,3 @@ if [ "$0" = "/usr/sbin/lightdm-session" -a "$DESKTOP_SESSION" = "i3" ]; then
 fi
 
 eval "$(ssh-agent -s)"
-
-. "$HOME/.cargo/env"
