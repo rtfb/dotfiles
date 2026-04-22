@@ -37,6 +37,8 @@ alias o=xdg-open
 alias p=python3
 # probably does the same as ^L and 'tput clear':
 alias fixtty='stty sane'
+alias kc=kubectl
+alias kx=kubectx
 
 # a shortcut to grepping over history
 function hgrep() { history | grep "$@"; }
@@ -50,3 +52,8 @@ function vimmit(){
         vim $(git diff-tree --no-commit-id --name-only -r $1)
     fi
 }
+
+# source overrides for work
+if [ -f ~/.bash_aliases-bsq ]; then
+    source ~/.bash_aliases-bsq
+fi
