@@ -248,7 +248,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # source overrides for work
-if [ -f ~/.bashrc-uber ]; then
-    . ~/.bashrc-uber
+if [ -f ~/.bashrc-bsq ]; then
+    source ~/.bashrc-bsq
 fi
 . "$HOME/.cargo/env"
