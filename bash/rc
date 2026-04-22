@@ -5,6 +5,11 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+# source .profile to pick up PATH and other env
+if [ -f ~/.profile ]; then
+    source ~/.profile
+fi
+
 platform="unknown"
 unamestr=$(uname)
 
@@ -241,11 +246,6 @@ PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# source .profile to pick up PATH and other env
-if [ -f ~/.profile ]; then
-    . ~/.profile
-fi
 
 # source overrides for work
 if [ -f ~/.bashrc-uber ]; then
