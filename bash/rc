@@ -99,9 +99,6 @@ deps() {
     go list -f '{{ join .Deps  "\n"}}' .
 }
 
-# http://zameermanji.com/blog/2012/12/30/using-vim-as-manpager/
-export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
-
 case "$platform" in
     "linux")
         export ANDROID_HOME=$HOME/sw/android-sdk
@@ -164,7 +161,7 @@ GIT_PS1_SHOWUNTRACKEDFILES="1"
 GIT_PS1_SHOWSTASHSTATE="1"
 #  echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
 if [[ $platform == 'linux' ]]; then
-    export PS1=$BYellow$PathShort$Color_Off' -$(git branch &>/dev/null;\
+    export PS1=$BYellow$PathShort$Color_Off' -$(git branch &>/dev/null; \
     if [ $? -eq 0 ]; then \
       echo "$( \
       if [ "$(__git_ps1 %s)" = "`git branch | grep "*" | sed s/"^* "//`" ]; then \
