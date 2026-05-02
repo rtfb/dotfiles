@@ -260,6 +260,12 @@ cp $here/bin/lock-dpms.sh ~/bin/
 symlink $here/gdbinit ~/.gdbinit
 
 #================
+# tmux
+#================
+mkdir -p ~/.config/tmux
+symlink $here/tmux.conf ~/.config/tmux/tmux.conf
+
+#================
 # misc
 #================
 symlink $here/bin/ekto.py ~/bin/ekto.py
