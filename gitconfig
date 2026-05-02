@@ -5,6 +5,9 @@
 [include]
     path = ~/.gitconfig.local
 
+[includeIf "gitdir:~/wrk/"]
+    path = ~/wrk/gitconfig
+
 [color]
     ui = auto
 
